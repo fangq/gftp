@@ -1,3 +1,9 @@
+2004-7-14 Brian Masney <masneyb@gftp.org>
+	* acinclude.m4 - removed AC_SYS_LARGEFILE. This is provided by newer
+	versions of automake
+
+	* configure.in - added pa to ALL_LINGUAS. Updated version to 2.0.18pre1
+
 2004-7-13 Brian Masney <masneyb@gftp.org>
 	* lib/gftp.h lib/local.c lib/protocols.c lib/rfc2068.c lib/rfc959.c
 	lib/sshv2.c - added gftp_stat_filename(). This will retrieve the
@@ -2567,7 +2573,7 @@
 
 	* cvsclean - added this script
 
-	* *.[ch] - added $Id: ChangeLog,v 1.279 2004/07/14 02:33:42 masneyb Exp $ tags
+	* *.[ch] - added $Id: ChangeLog,v 1.280 2004/07/18 15:42:48 masneyb Exp $ tags
 
 	* debian/* - updated files from Debian maintainer
 
