@@ -1,3 +1,15 @@
+2003-1-5 Brian Masney <masneyb@gftp.org>
+	* lib/gftp.h src/gtk/misc-gtk.c src/text/gftp-text.c - added logging
+	level type gftp_logging_misc_nolog. If a message is logged with this
+	level, it will be displayed to the screen but, it will not be logged
+	to disk.
+
+	* src/uicommon/gftpui.c - log the directory listings with the log level
+	gftp_logging_misc_nolog
+
+	* src/gtk/gtkui.c (gftpui_generic_thread) - fixed segfault. Pass
+	cdata structure instead of wdata.
+
 2003-1-4 Brian Masney <masneyb@gftp.org>
 	* src/text/Makefile.am src/gtk/Makefile.am - added @LIBINTL@ to LDADD
 	line of Makefile.am
@@ -1914,7 +1926,7 @@
 
 	* cvsclean - added this script
 
-	* *.[ch] - added $Id: ChangeLog,v 1.194 2004/01/04 17:52:42 masneyb Exp $ tags
+	* *.[ch] - added $Id: ChangeLog,v 1.195 2004/01/05 23:38:19 masneyb Exp $ tags
 
 	* debian/* - updated files from Debian maintainer
 
