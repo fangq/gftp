@@ -1,4 +1,9 @@
 2004-11-11 Brian Masney <masneyb@gftp.org>
+	* lib/protocols.c (gftp_connect_server) - if the system does not have
+	getaddrinfo(), removed erronous g_return_val_if_fail() that was always
+	causing the function to fail and not connect to the server
+	(from samn@sun.com)
+
 	* configure.in - fixes for HP/UX
 	(from "H.Merijn Brand" <h.m.brand@hccnet.nl>)
 
@@ -3068,7 +3073,7 @@
 
 	* cvsclean - added this script
 
-	* *.[ch] - added $Id: ChangeLog,v 1.369 2004/11/11 23:48:05 masneyb Exp $ tags
+	* *.[ch] - added $Id: ChangeLog,v 1.370 2004/11/11 23:53:58 masneyb Exp $ tags
 
 	* debian/* - updated files from Debian maintainer
 
