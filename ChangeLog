@@ -1,3 +1,7 @@
+2004-02-21  Paisa Seeluangsawat  <paisa@users.sf.net>
+
+	* configure.in: Added Thai (th) to ALL_LINGUAS.
+
 2004-2-16 Brian Masney <masneyb@gftp.org>
 	* configure.in - added ta.po to ALL_LINGUIS
 
@@ -2217,7 +2221,7 @@
 
 	* cvsclean - added this script
 
-	* *.[ch] - added $Id: ChangeLog,v 1.225 2004/02/17 01:03:12 masneyb Exp $ tags
+	* *.[ch] - added $Id: ChangeLog,v 1.226 2004/02/21 23:23:38 paisa Exp $ tags
 
 	* debian/* - updated files from Debian maintainer
 
