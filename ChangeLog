@@ -1,3 +1,8 @@
+2005-1-25 Brian Masney <masneyb@gftp.org>
+	* src/gtk/gtkui.c (gftpui_run_function_callback) - after the needed
+	information is retrieved from the dialog, destroy the dialog before
+	the callback function is called
+
 2005-1-24 Brian Masney <masneyb@gftp.org>
 	* configure.in - added AM_TYPE_PTRDIFF_T
 	(from Helmut Jarausch <jarausch@igpm.rwth-aachen.de>)
@@ -3259,7 +3264,7 @@
 
 	* cvsclean - added this script
 
-	* *.[ch] - added $Id: ChangeLog,v 1.400 2005/01/25 02:39:43 masneyb Exp $ tags
+	* *.[ch] - added $Id: ChangeLog,v 1.401 2005/01/26 03:22:05 masneyb Exp $ tags
 
 	* debian/* - updated files from Debian maintainer
 
