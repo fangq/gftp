@@ -1,3 +1,16 @@
+2004-7-25 Brian Masney <masneyb@gftp.org>
+	* src/gtk/transfer.c - when spawning a thread to get the
+	subdirectories, don't refresh the local directory listing. Also added
+	custom connect/disconnect functions so that timeouts can be handled
+	properly. 
+
+	* src/gtk/delete_dialog.c - make sure that 2 connections to the server
+	don't get established
+
+	* src/uicommon/gftpui.c src/uicommon/gftpui.h - added dont_refresh
+	variable to gftpui_callback_data structure. If this is true, then it
+	will not run gftpui_refresh() after the thread terminates
+
 2004-7-24 Brian Masney <masneyb@gftp.org>
 	* src/uicommon/gftpui.c src/uicommon/gftpui.h - added support for
 	a custom connect and disconnect function in the thread callback
@@ -2605,7 +2618,7 @@
 
 	* cvsclean - added this script
 
-	* *.[ch] - added $Id: ChangeLog,v 1.288 2004/07/24 12:43:03 masneyb Exp $ tags
+	* *.[ch] - added $Id: ChangeLog,v 1.289 2004/07/25 14:15:00 masneyb Exp $ tags
 
 	* debian/* - updated files from Debian maintainer
 
