@@ -1,4 +1,7 @@
 2005-1-24 Brian Masney <masneyb@gftp.org>
+	* configure.in - added AM_TYPE_PTRDIFF_T
+	(from Helmut Jarausch <jarausch@igpm.rwth-aachen.de>)
+
 	* lib/protocols.c lib/rfc959.c src/gtk/dnd.c src/gtk/gftp-gtk.c 
 	src/gtk/gtkui.c src/gtk/menu-items.c src/gtk/misc-gtk.c
 	src/gtk/transfer.c src/gtk/view-dialog.c src/uicommon/gftpui.c - make
@@ -3256,7 +3259,7 @@
 
 	* cvsclean - added this script
 
-	* *.[ch] - added $Id: ChangeLog,v 1.399 2005/01/25 02:34:18 masneyb Exp $ tags
+	* *.[ch] - added $Id: ChangeLog,v 1.400 2005/01/25 02:39:43 masneyb Exp $ tags
 
 	* debian/* - updated files from Debian maintainer
 
