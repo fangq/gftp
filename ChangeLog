@@ -1,3 +1,10 @@
+2002-10-31 Brian Masney <masneyb@gftp.org>
+	* src/gtk/*.[ch] - don't check for gtk+ version based on the minor 
+	version. May cause problems later on.
+
+	* lib/protocols.c src/gtk/bookmarks.c src/gtk/misc-gtk.c - use UTF8
+	functions for user data when using glib 2.0
+
 2002-10-30 Brian Masney <masneyb@gftp.org>
 	* src/gtk/gftp-gtk.c (CreateMenus) - no longer use depreciated
 	_gtk_accel_group_attach in GTK+ 2.0 port. Instead use 
@@ -115,7 +122,7 @@
 
 	* cvsclean - added this script
 
-	* *.[ch] - added $Id: ChangeLog,v 1.23 2002/10/30 22:56:29 masneyb Exp $ tags
+	* *.[ch] - added $Id: ChangeLog,v 1.24 2002/10/31 23:55:15 masneyb Exp $ tags
 
 	* debian/* - updated files from Debian maintainer
 
