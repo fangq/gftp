@@ -1,3 +1,7 @@
+2003-9-21 Brian Masney <masneyb@gftp.org>
+	* lib/rfc959.c - if there is a login failure, return GFTP_ERETRYABLE
+	(from winkey <rush@winkey.oompah.org>)
+
 2003-09-01  Metin Amiroff  <metin@karegen.com>
 
 	configure.in: Added "az" in ALL_LINGUAS.
@@ -1494,7 +1498,7 @@
 
 	* cvsclean - added this script
 
-	* *.[ch] - added $Id: ChangeLog,v 1.137 2003/09/01 10:19:02 rundll32 Exp $ tags
+	* *.[ch] - added $Id: ChangeLog,v 1.138 2003/09/21 16:21:35 masneyb Exp $ tags
 
 	* debian/* - updated files from Debian maintainer
 
