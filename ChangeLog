@@ -1,3 +1,6 @@
+2003-2-23 Brian Masney <masneyb@gftp.org>
+	* acinclude.m4 - put largefile.m4 in here
+
 2003-02-21  Pablo Saratxaga  <pablo@mandrakesoft.com>
 	* configure.in: Added Catalan (ca) to ALL_LINGUAS
 
@@ -499,7 +502,7 @@
 
 	* cvsclean - added this script
 
-	* *.[ch] - added $Id: ChangeLog,v 1.60 2003/02/21 20:15:56 pablo Exp $ tags
+	* *.[ch] - added $Id: ChangeLog,v 1.61 2003/02/24 02:22:49 masneyb Exp $ tags
 
 	* debian/* - updated files from Debian maintainer
 
