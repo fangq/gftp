@@ -1,3 +1,6 @@
+2003-10-22 Brian Masney <masneyb@gftp.org>
+	* lib/rfc2068.c - fixed parsing some chunked file transfers
+
 2003-10-19 Brian Masney <masneyb@gftp.org>
 	* lib/rfc959.c - abort a file transfer properly. When a transfer is
 	aborted, you will not be disconnected from the remote site.
@@ -1592,7 +1595,7 @@
 
 	* cvsclean - added this script
 
-	* *.[ch] - added $Id: ChangeLog,v 1.154 2003/10/19 13:31:24 masneyb Exp $ tags
+	* *.[ch] - added $Id: ChangeLog,v 1.155 2003/10/22 20:27:23 masneyb Exp $ tags
 
 	* debian/* - updated files from Debian maintainer
 
