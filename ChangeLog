@@ -1,3 +1,7 @@
+2002-11-11 Andras Timar <timar@gnome.hu>
+
+	* configure.in: added 'hu' to ALL_LINGUAS
+
 2002-11-6 Brian Masney <masneyb@gftp.org>
 	* src/gtk/gftp-gtk.c - connect to the select_row signal in the file
 	listbox to grab the double click event
@@ -167,7 +171,7 @@
 
 	* cvsclean - added this script
 
-	* *.[ch] - added $Id: ChangeLog,v 1.29 2002/11/07 02:38:30 masneyb Exp $ tags
+	* *.[ch] - added $Id: ChangeLog,v 1.30 2002/11/10 23:09:11 bansz Exp $ tags
 
 	* debian/* - updated files from Debian maintainer
 
