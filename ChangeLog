@@ -1,4 +1,7 @@
-2004-7-14 Brian Masney <masneyb@gftp.org>
+2004-7-18 Brian Masney <masneyb@gftp.org>
+	* acinclude.m4 - quote the definition of the automake functions. This
+	fixes warnings from automake 1.8
+
 	* acinclude.m4 - removed AC_SYS_LARGEFILE. This is provided by newer
 	versions of automake
 
@@ -2573,7 +2576,7 @@
 
 	* cvsclean - added this script
 
-	* *.[ch] - added $Id: ChangeLog,v 1.280 2004/07/18 15:42:48 masneyb Exp $ tags
+	* *.[ch] - added $Id: ChangeLog,v 1.281 2004/07/18 15:57:40 masneyb Exp $ tags
 
 	* debian/* - updated files from Debian maintainer
 
