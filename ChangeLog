@@ -1,3 +1,11 @@
+2004-3-1 Brian Masney <masneyb@gftp.org>
+	* lib/ftps.c - set the protocol number to GFTP_FTPS_NUM
+
+	* lib/https.c - set the protocol number to GFTP_HTTPS_NUM
+
+	* lib/rfc959.c lib/rfc2068.c - remove references to checking for
+	GFTP_FTP_NUM and GFTP_HTTP_NUM
+
 2004-2-29 Brian Masney <masneyb@gftp.org>
 	* lib/rfc959.c - in several instances, if an invalid response is
 	received from the server, make sure an error message is logged to the
@@ -2226,7 +2234,7 @@
 
 	* cvsclean - added this script
 
-	* *.[ch] - added $Id: ChangeLog,v 1.227 2004/02/29 14:35:58 masneyb Exp $ tags
+	* *.[ch] - added $Id: ChangeLog,v 1.228 2004/03/02 02:29:09 masneyb Exp $ tags
 
 	* debian/* - updated files from Debian maintainer
 
