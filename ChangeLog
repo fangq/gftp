@@ -1,4 +1,7 @@
 2004-3-21 Brian Masney <masneyb@gftp.org>
+	* lib/ftps.c (ftps_auth_tls_start) - if the server rejects the
+	PROT C command, disconnect from the server
+
 	* src/gtk/gftp-gtk.c - initialize the read/write color functions before
 	gftp is initialized
 
@@ -2370,7 +2373,7 @@
 
 	* cvsclean - added this script
 
-	* *.[ch] - added $Id: ChangeLog,v 1.251 2004/03/21 23:55:56 masneyb Exp $ tags
+	* *.[ch] - added $Id: ChangeLog,v 1.252 2004/03/22 00:04:55 masneyb Exp $ tags
 
 	* debian/* - updated files from Debian maintainer
 
