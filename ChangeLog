@@ -1,3 +1,8 @@
+2004-9-22 Brian Masney <masneyb@gftp.org>
+	* src/gtk/transfer.c (check_done_process) - if the process returned an
+	error code, then remove the file and don't prompt the user to upload the
+	file if it was changed
+
 2004-9-17 Brian Masney <masneyb@gftp.org>
 	* src/gtk/transfer.c (check_done_process) - make sure the return code
 	from the process is reported correctly to the user
@@ -2837,7 +2842,7 @@
 
 	* cvsclean - added this script
 
-	* *.[ch] - added $Id: ChangeLog,v 1.323 2004/09/18 00:42:01 masneyb Exp $ tags
+	* *.[ch] - added $Id: ChangeLog,v 1.324 2004/09/22 23:38:53 masneyb Exp $ tags
 
 	* debian/* - updated files from Debian maintainer
 
