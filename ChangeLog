@@ -1,3 +1,9 @@
+2004-5-26 Brian Masney <masneyb@gftp.org>
+	* src/gtk/dnd.c - when a URL is dropped on the connect button, log the
+	URL that is received
+
+	* src/gtk/gftp-gtk.c src/gtk/options_dialog.c - more 64 bit cleanups
+
 2004-5-16 Brian Masney <masneyb@gftp.org>
 	* src/gtk/gftp-gtk.c src/gtk/gftp-gtk.h src/gtk/transfer.c - fixed
 	detection of SIGCHLD when viewing/editing a file (from
@@ -2463,7 +2469,7 @@
 
 	* cvsclean - added this script
 
-	* *.[ch] - added $Id: ChangeLog,v 1.262 2004/05/16 13:34:02 masneyb Exp $ tags
+	* *.[ch] - added $Id: ChangeLog,v 1.263 2004/05/27 09:54:57 masneyb Exp $ tags
 
 	* debian/* - updated files from Debian maintainer
 
