@@ -1,4 +1,7 @@
 2004-9-29 Brian Masney <masneyb@gftp.org>
+	* configure.in - removed intl/Makefile po/Makefile.in from AC_OUTPUT
+	since automake will add these
+
 	* docs/website/index.html.in - added CVS Id tag to the bottom of the
 	page
 
@@ -2908,7 +2911,7 @@
 
 	* cvsclean - added this script
 
-	* *.[ch] - added $Id: ChangeLog,v 1.337 2004/09/29 23:15:13 masneyb Exp $ tags
+	* *.[ch] - added $Id: ChangeLog,v 1.338 2004/09/29 23:29:31 masneyb Exp $ tags
 
 	* debian/* - updated files from Debian maintainer
 
