@@ -1,4 +1,8 @@
 2004-12-31 Brian Masney <masneyb@gftp.org>
+	* src/uicommon/gftpui.c (gftpui_common_transfer_files) - check the
+	return status of gftp_end_transfer() to see if there was an error
+	closing the remote file
+	
 	* src/uicommon/gftpui.c - added dir and ldir commands to the command 
 	line interface
 
@@ -3176,7 +3180,7 @@
 
 	* cvsclean - added this script
 
-	* *.[ch] - added $Id: ChangeLog,v 1.385 2004/12/31 14:25:28 masneyb Exp $ tags
+	* *.[ch] - added $Id: ChangeLog,v 1.386 2004/12/31 15:33:01 masneyb Exp $ tags
 
 	* debian/* - updated files from Debian maintainer
 
