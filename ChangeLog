@@ -1,4 +1,6 @@
 2004-9-22 Brian Masney <masneyb@gftp.org>
+	* lib/options.h - fixed misspelling
+
 	* lib/options.h src/uicommon/gftpui.c - added option to preserve the
 	file time. In the past, it would save the file time if saving the file
 	permissions was enabled.
@@ -2846,7 +2848,7 @@
 
 	* cvsclean - added this script
 
-	* *.[ch] - added $Id: ChangeLog,v 1.325 2004/09/23 01:04:32 masneyb Exp $ tags
+	* *.[ch] - added $Id: ChangeLog,v 1.326 2004/09/23 01:11:18 masneyb Exp $ tags
 
 	* debian/* - updated files from Debian maintainer
 
