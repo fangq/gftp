@@ -1,4 +1,10 @@
 2003-6-25 Brian Masney <masneyb@gftp.org>
+	* lib/misc.c (expand_path) - small improvements
+
+	* lib/rfc2068.c src/text/gftp-gtk.c - fixes for path handling, namely
+	when changing directories to the parent (..)
+
+2003-6-25 Brian Masney <masneyb@gftp.org>
 	* lib/misc.c - fix warning if DMALLOC is disabled
 
 	* src/text/gftp-text.c - don't attempt to expand the local directory
@@ -1128,7 +1134,7 @@
 
 	* cvsclean - added this script
 
-	* *.[ch] - added $Id: ChangeLog,v 1.102 2003/06/26 01:40:23 masneyb Exp $ tags
+	* *.[ch] - added $Id: ChangeLog,v 1.103 2003/06/26 02:14:22 masneyb Exp $ tags
 
 	* debian/* - updated files from Debian maintainer
 
