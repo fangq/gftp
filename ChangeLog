@@ -1,3 +1,8 @@
+2004-2-16 Brian Masney <masneyb@gftp.org>
+	* src/gtk/misc-gtk.c - compile fix for GTK+ 1.2
+
+	* po/POTFILES.in - added ftps.c and ftpcommon.h and httpcommon.h
+
 2004-2-15 Brian Masney <masneyb@gftp.org>
 	* debian/changelog debian/copyright debian/gftp-text.postinst
 	debian/gftp-text.prerm - updated Debian packaging files from
@@ -2200,7 +2205,7 @@
 
 	* cvsclean - added this script
 
-	* *.[ch] - added $Id: ChangeLog,v 1.222 2004/02/15 18:07:07 masneyb Exp $ tags
+	* *.[ch] - added $Id: ChangeLog,v 1.223 2004/02/17 00:04:55 masneyb Exp $ tags
 
 	* debian/* - updated files from Debian maintainer
 
