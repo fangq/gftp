@@ -1,4 +1,11 @@
 2004-3-17 Brian Masney <masneyb@gftp.org>
+	* docs/gftp-faq.sgml - added SSL Issues section
+
+	* docs/sample.gftp/gftprc - updated config file that has all
+	of the new options added since 2.0.16
+
+	* lib/options.h - disable show_trans_in_title by default
+
 	* lib/config_file.c lib/gftp.h lib/misc.c lib/protocols.c
 	src/gtk/bookmarks.c (gftp_copy_local_options) - in the new
 	options that are copied, update the the number of options that are
@@ -2299,7 +2306,7 @@
 
 	* cvsclean - added this script
 
-	* *.[ch] - added $Id: ChangeLog,v 1.236 2004/03/17 13:03:22 masneyb Exp $ tags
+	* *.[ch] - added $Id: ChangeLog,v 1.237 2004/03/17 13:44:37 masneyb Exp $ tags
 
 	* debian/* - updated files from Debian maintainer
 
