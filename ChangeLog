@@ -1,3 +1,14 @@
+2004-8-1 Brian Masney <masneyb@gftp.org>
+	* lib/sshv2.c - treat all integers from the remote server as
+	unsigned
+
+	* src/gtk/delete_dialog.c - fixed memory leak
+
+	* src/gtk/chmod_dialog.c src/gtk/delete_dialog.c src/gtk/dnd.c
+	src/gtk/gftp-gtk.c src/gtk/gftp-gtk.h src/gtk/gtkui.c 
+	src/gtk/menu-items.c src/gtk/transfer.c - added
+	gftp_gtk_get_list_selection() macro
+
 2004-7-27 Brian Masney <masneyb@gftp.org>
 	* lib/rfc959.c src/gtk/misc-gtk.c src/gtk/view_dialog.c - fixed more
 	comparsions between signed and unsigned integers
@@ -2691,7 +2702,7 @@
 
 	* cvsclean - added this script
 
-	* *.[ch] - added $Id: ChangeLog,v 1.299 2004/07/28 02:47:24 masneyb Exp $ tags
+	* *.[ch] - added $Id: ChangeLog,v 1.300 2004/08/01 11:03:38 masneyb Exp $ tags
 
 	* debian/* - updated files from Debian maintainer
 
