@@ -1,4 +1,8 @@
 2004-12-12 Brian Masney <masneyb@gftp.org>
+	* lib/gftp.h lib/protocols.c (gftp_connect_server) - if getaddrinfo()
+	is not defined in the system, save the current index of the host that we
+	are connected to
+
 	* src/gtk/gftp-gtk.c (toolbar_hostedit) - use gftp_disconnect() instead
 	of gftpui_disconnect(). The gftpui_disconnect() function will clear out
 	the directory in the request structure
@@ -3139,7 +3143,7 @@
 
 	* cvsclean - added this script
 
-	* *.[ch] - added $Id: ChangeLog,v 1.376 2004/12/12 11:26:15 masneyb Exp $ tags
+	* *.[ch] - added $Id: ChangeLog,v 1.377 2004/12/12 11:52:17 masneyb Exp $ tags
 
 	* debian/* - updated files from Debian maintainer
 
