@@ -1,4 +1,10 @@
 2004-7-24 Brian Masney <masneyb@gftp.org>
+	* src/uicommon/gftpui.c src/uicommon/gftpui.h - added support for
+	a custom connect and disconnect function in the thread callback
+
+	* lib/local.c (local_connect) - don't step on request->directory if
+	it is already set to the current working directory
+
 	* lib/protocols.c (gftp_get_all_subdirs) - if there is an error in the
 	protocol function, make sure the error code is returned as is. This is
 	so that timeouts can be detected properly
@@ -2599,7 +2605,7 @@
 
 	* cvsclean - added this script
 
-	* *.[ch] - added $Id: ChangeLog,v 1.287 2004/07/24 12:14:32 masneyb Exp $ tags
+	* *.[ch] - added $Id: ChangeLog,v 1.288 2004/07/24 12:43:03 masneyb Exp $ tags
 
 	* debian/* - updated files from Debian maintainer
 
