@@ -1,4 +1,8 @@
 2004-7-18 Brian Masney <masneyb@gftp.org>
+	* lib/local.c lib/protocols.c lib/rfc959.c src/uicommon/gftpui.c - fixes
+	for the *_chmod() functions to use the datatype mode_t for storing
+	the file attributes
+
 	* acinclude.m4 - quote the definition of the automake functions. This
 	fixes warnings from automake 1.8
 
@@ -2576,7 +2580,7 @@
 
 	* cvsclean - added this script
 
-	* *.[ch] - added $Id: ChangeLog,v 1.281 2004/07/18 15:57:40 masneyb Exp $ tags
+	* *.[ch] - added $Id: ChangeLog,v 1.282 2004/07/18 16:19:14 masneyb Exp $ tags
 
 	* debian/* - updated files from Debian maintainer
 
