@@ -1,3 +1,8 @@
+2004-12-12 Brian Masney <masneyb@gftp.org>
+	* src/gtk/gftp-gtk.c (toolbar_hostedit) - use gftp_disconnect() instead
+	of gftpui_disconnect(). The gftpui_disconnect() function will clear out
+	the directory in the request structure
+
 2004-12-2 Brian Masney <masneyb@gftp.org>
 	* src/gtk/gtkui.c (gftpui_run_function_callback)
 	src/uicommon/gftpui.h - added toggled variable to the
@@ -3134,7 +3139,7 @@
 
 	* cvsclean - added this script
 
-	* *.[ch] - added $Id: ChangeLog,v 1.375 2004/12/02 23:19:30 masneyb Exp $ tags
+	* *.[ch] - added $Id: ChangeLog,v 1.376 2004/12/12 11:26:15 masneyb Exp $ tags
 
 	* debian/* - updated files from Debian maintainer
 
