@@ -1,4 +1,7 @@
 2004-8-17 Brian Masney <masneyb@gftp.org>
+	* src/gtk/gftp-gtk.c - removed local shortcuts for Disconnect
+	and Open URL. These conflicted with other items
+
 	* lib/misc.c - when sorting by file, user or group, do a case
 	insensitive sort
 
@@ -2750,7 +2753,7 @@
 
 	* cvsclean - added this script
 
-	* *.[ch] - added $Id: ChangeLog,v 1.309 2004/08/18 02:23:19 masneyb Exp $ tags
+	* *.[ch] - added $Id: ChangeLog,v 1.310 2004/08/18 02:52:19 masneyb Exp $ tags
 
 	* debian/* - updated files from Debian maintainer
 
