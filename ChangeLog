@@ -1,4 +1,7 @@
 2003-2-1 Brian Masney <masneyb@gftp.org>
+	* src/gtk/dnd.c - whenever a file(s)/directories are dropped onto
+	gftp, allow resuming the file transfers
+
 	* lib/protocols.c (gftp_get_dir_listing, gftp_get_all_subdirs) - don't
 	modify the file variable if it begins with a /. Do not touch the
 	destfile variable if it already exists
@@ -2117,7 +2120,7 @@
 
 	* cvsclean - added this script
 
-	* *.[ch] - added $Id: ChangeLog,v 1.211 2004/02/01 22:14:14 masneyb Exp $ tags
+	* *.[ch] - added $Id: ChangeLog,v 1.212 2004/02/01 22:24:45 masneyb Exp $ tags
 
 	* debian/* - updated files from Debian maintainer
 
