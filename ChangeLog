@@ -1,4 +1,13 @@
 2004-11-11 Brian Masney <masneyb@gftp.org>
+	* configure.in - fixes for HP/UX
+	(from "H.Merijn Brand" <h.m.brand@hccnet.nl>)
+
+	* lib/gftp.h - fixes for large files under HP/UX
+	(from "H.Merijn Brand" <h.m.brand@hccnet.nl>)
+
+	* lib/protocols.c (gftp_list_files) - if ENABLE_NLS is disabled, then
+	do not use setlocale()
+
 	* docs/website/index.html.in - fixed several typos on the website.
 	Updated introduction paragraph
 
@@ -3059,7 +3068,7 @@
 
 	* cvsclean - added this script
 
-	* *.[ch] - added $Id: ChangeLog,v 1.368 2004/11/11 23:33:41 masneyb Exp $ tags
+	* *.[ch] - added $Id: ChangeLog,v 1.369 2004/11/11 23:48:05 masneyb Exp $ tags
 
 	* debian/* - updated files from Debian maintainer
 
