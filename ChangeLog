@@ -1,3 +1,8 @@
+2003-5-22 Brian Masney <masneyb@gftp.org>
+  * lib/misc.c (gftp_usage) - updated usage statement
+
+  * lib/options.h - put terminate options properly
+
 2003-05-06  Christian Rose  <menthos@menthos.com>
 
 	* configure.in: Added sr and sr@Latn to ALL_LINGUAS.
@@ -826,7 +831,7 @@
 
 	* cvsclean - added this script
 
-	* *.[ch] - added $Id: ChangeLog,v 1.78 2003/05/05 22:36:53 menthos Exp $ tags
+	* *.[ch] - added $Id: ChangeLog,v 1.79 2003/05/23 01:01:00 masneyb Exp $ tags
 
 	* debian/* - updated files from Debian maintainer
 
