@@ -1,3 +1,6 @@
+2002-12-2 Brian Masney <masneyb@gftp.org>
+	* src/gtk/misc-gtk.c (MakeEditDialog) - bind to enter and esc keys
+
 2002-11-27 Brian Masney <masneyb@gftp.org>
 	* Officially release 2.0.14rc1
 
@@ -340,7 +343,7 @@
 
 	* cvsclean - added this script
 
-	* *.[ch] - added $Id: ChangeLog,v 1.42 2002/11/27 14:29:54 masneyb Exp $ tags
+	* *.[ch] - added $Id: ChangeLog,v 1.43 2002/12/03 02:22:30 masneyb Exp $ tags
 
 	* debian/* - updated files from Debian maintainer
 
