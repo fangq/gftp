@@ -1,4 +1,13 @@
 2003-4-13 Brian Masney <masneyb@gftp.org>
+	* lib/config_file.c - fixed float config type
+
+	* lib/gftp.h lib/misc.c - added gftp_gen_ls_string()
+
+	* src/gtk/menu-items.c (dosave_directory_listing) 
+	src/text/gftp-text.c (gftp_text_ls) - use 
+	gftp_gen_ls_string()
+
+2003-4-13 Brian Masney <masneyb@gftp.org>
 	* lib/config_file.c - implemented gftp_set_global_option()
 
 	* lib/gftp.h lib/misc.c - added gftp_tdata_new()
@@ -684,7 +693,7 @@
 
 	* cvsclean - added this script
 
-	* *.[ch] - added $Id: ChangeLog,v 1.69 2003/04/13 15:21:10 masneyb Exp $ tags
+	* *.[ch] - added $Id: ChangeLog,v 1.70 2003/04/14 01:07:34 masneyb Exp $ tags
 
 	* debian/* - updated files from Debian maintainer
 
