@@ -1,4 +1,10 @@
 2004-9-29 Brian Masney <masneyb@gftp.org>
+	* docs/website/index.html.in - added CVS Id tag to the bottom of the
+	page
+
+	* docs/website/update-gftp-cvs.sh - added script to autobuild a tarball
+	from the latest CVS code
+
 	* lib/sshv2.c (sshv2_set_config_options) set the request->need_password
 	to be the value of the option ssh_need_userpass
 
@@ -2902,7 +2908,7 @@
 
 	* cvsclean - added this script
 
-	* *.[ch] - added $Id: ChangeLog,v 1.336 2004/09/29 22:59:06 masneyb Exp $ tags
+	* *.[ch] - added $Id: ChangeLog,v 1.337 2004/09/29 23:15:13 masneyb Exp $ tags
 
 	* debian/* - updated files from Debian maintainer
 
