@@ -1,3 +1,10 @@
+2004-7-11 Brian Masney <masneyb@gftp.org>
+	* src/gtk/gftp-gtk.c src/gtk/gftp-gtk.h src/gtk/gtkui.c 
+	src/gtk/transfer.c - removed use_cache argument to ftp_list_files()
+	This was not being used
+
+	* src/gtk/gftp-gtk.c - compile fix when compiling against GTK 1.2
+
 2004-7-6 Brian Masney <masneyb@gftp.org>
 	* lib/sshv2.c - added sshv2_wrong_message(). Changed the wrong message
 	log messages to call this function instead
@@ -2527,7 +2534,7 @@
 
 	* cvsclean - added this script
 
-	* *.[ch] - added $Id: ChangeLog,v 1.274 2004/07/07 01:52:16 masneyb Exp $ tags
+	* *.[ch] - added $Id: ChangeLog,v 1.275 2004/07/11 11:15:36 masneyb Exp $ tags
 
 	* debian/* - updated files from Debian maintainer
 
