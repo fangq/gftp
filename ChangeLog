@@ -1,4 +1,6 @@
 2004-9-6 Brian Masney <masneyb@gftp.org>
+	* lib/gftp.h - make sure the _GNU_SOURCE is always defined.
+
 	* lib/gftp.h lib/misc.c lib/protocols.c lib/rfc959.c - fixes for
 	hosts that have IPv6 and IPv4 hostnames and a IPv6 connection cannot
 	be made
@@ -2807,7 +2809,7 @@
 
 	* cvsclean - added this script
 
-	* *.[ch] - added $Id: ChangeLog,v 1.318 2004/09/08 00:34:15 masneyb Exp $ tags
+	* *.[ch] - added $Id: ChangeLog,v 1.319 2004/09/08 01:36:10 masneyb Exp $ tags
 
 	* debian/* - updated files from Debian maintainer
 
