@@ -1,4 +1,9 @@
 2005-1-24 Brian Masney <masneyb@gftp.org>
+	* lib/protocols.c lib/rfc959.c src/gtk/dnd.c src/gtk/gftp-gtk.c 
+	src/gtk/gtkui.c src/gtk/menu-items.c src/gtk/misc-gtk.c
+	src/gtk/transfer.c src/gtk/view-dialog.c src/uicommon/gftpui.c - make
+	sure the logging level gftp_logging_error is used for all error messages
+
 	* lib/protocols.c (gftp_parse_url) - rewrote the URL parser so that the
 	URL is parsed from right to left instead of left to right. There are
 	more checks done to the URL.
@@ -3251,7 +3256,7 @@
 
 	* cvsclean - added this script
 
-	* *.[ch] - added $Id: ChangeLog,v 1.398 2005/01/25 01:55:01 masneyb Exp $ tags
+	* *.[ch] - added $Id: ChangeLog,v 1.399 2005/01/25 02:34:18 masneyb Exp $ tags
 
 	* debian/* - updated files from Debian maintainer
 
