@@ -6,7 +6,7 @@
 <book>
 
 <bookinfo>
-  <date>$Date: 2004/09/14 10:24:01 $</date>
+  <date>$Date: 2004/09/18 00:42:01 $</date>
   <title>gFTP FAQ</title>
   <authorgroup>
     <author>
@@ -272,6 +272,20 @@ If gFTP was compiled with _GNU_SOURCE defined (run
 %'ld. If your <emphasis>LANG</emphasis> environment is set to C, then no
 commas will be inserted. If you are in the US, change your 
 <emphasis>LANG</emphasis> environment variable to <emphasis>en_US</emphasis>.
+</para>
+
+</sect1>
+
+<!-- ----------------------------------------------------------------- -->
+
+<sect1>
+<title>When using an external editor, gFTP does not detect changes that are being made to the file.</title>
+
+<para>
+Look at the man page for the editor you are using and see if there is a
+command line argument to have the editor run in the foreground (it won't
+fork to detact from the current terminal). If you are using one of the
+graphical VIM editors, you can add the --nofork argument.
 </para>
 
 </sect1>
