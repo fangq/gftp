@@ -1,3 +1,6 @@
+2005-1-23 Brian Masney <masneyb@gftp.org>
+	* po/POTFILES.in - added lib/fsp.c
+
 2005-1-18 Brian Masney <masneyb@gftp.org>
 	* lib/fsplib/fsplib.[ch] - updated files from FSPLIB 0.3
 
@@ -3233,7 +3236,7 @@
 
 	* cvsclean - added this script
 
-	* *.[ch] - added $Id: ChangeLog,v 1.395 2005/01/19 02:05:56 masneyb Exp $ tags
+	* *.[ch] - added $Id: ChangeLog,v 1.396 2005/01/23 14:12:02 masneyb Exp $ tags
 
 	* debian/* - updated files from Debian maintainer
 
