@@ -1,4 +1,6 @@
 2004-3-17 Brian Masney <masneyb@gftp.org>
+	* lib/options.h src/gtk/transfer.c - added start file transfers option
+
 	* lib/ftpcommon.h lib/ftps.c - removed encrypted_connection variable
 	from the rfc959_parms structure
 
@@ -2316,7 +2318,7 @@
 
 	* cvsclean - added this script
 
-	* *.[ch] - added $Id: ChangeLog,v 1.239 2004/03/17 18:40:40 masneyb Exp $ tags
+	* *.[ch] - added $Id: ChangeLog,v 1.240 2004/03/17 20:42:49 masneyb Exp $ tags
 
 	* debian/* - updated files from Debian maintainer
 
