@@ -1,4 +1,8 @@
 2003-2-3 Brian Masney <masneyb@gftp.org>
+	* lib/ftpcommon.h lib/ftps.c lib/rfc959.c - added pointers to
+	read/write functions to the rfc959_params structure for the data
+	connection. For now, this is always set to the plaintext version. 
+
 	* lib/Makefile.am lib/gftp.h lib/options.h lib/rfc959.c lib/ftpcommon.h
 	lib/ftps.c - added support for the FTPS protocol. This currently is only
 	for the control connection. (draft-murray-auth-ftp-ssl-09.txt)
@@ -2153,7 +2157,7 @@
 
 	* cvsclean - added this script
 
-	* *.[ch] - added $Id: ChangeLog,v 1.216 2004/02/04 01:53:02 masneyb Exp $ tags
+	* *.[ch] - added $Id: ChangeLog,v 1.217 2004/02/04 02:20:29 masneyb Exp $ tags
 
 	* debian/* - updated files from Debian maintainer
 
