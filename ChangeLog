@@ -1,4 +1,9 @@
 2004-3-17 Brian Masney <masneyb@gftp.org>
+	* lib/config_file.c lib/gftp.h lib/misc.c lib/protocols.c
+	src/gtk/bookmarks.c (gftp_copy_local_options) - in the new
+	options that are copied, update the the number of options that are
+	stored.
+
 	* lib/rfc2068.c (parse_html_line) - fix for parsing file sizes
 
 	* ChangeLog-old - updated with summary of changes since 2.0.16
@@ -2294,7 +2299,7 @@
 
 	* cvsclean - added this script
 
-	* *.[ch] - added $Id: ChangeLog,v 1.235 2004/03/17 11:59:25 masneyb Exp $ tags
+	* *.[ch] - added $Id: ChangeLog,v 1.236 2004/03/17 13:03:22 masneyb Exp $ tags
 
 	* debian/* - updated files from Debian maintainer
 
