@@ -1,4 +1,7 @@
 2003-1-18 Brian Masney <masneyb@gftp.org>
+	* src/gtk/gtkui_transfer.c - gtk+ specific file transfer code.
+	Forgot to attach this with the last commit
+
 	* lib/rfc959.c (rfc959_connect) - if the username is anonymous and a
 	password is already supplied, don't clobber it.
 
@@ -2022,7 +2025,7 @@
 
 	* cvsclean - added this script
 
-	* *.[ch] - added $Id: ChangeLog,v 1.204 2004/01/18 20:39:39 masneyb Exp $ tags
+	* *.[ch] - added $Id: ChangeLog,v 1.205 2004/01/19 12:23:52 masneyb Exp $ tags
 
 	* debian/* - updated files from Debian maintainer
 
