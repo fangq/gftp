@@ -1,4 +1,7 @@
 2003-10-12 Brian Masney <masneyb@gftp.org>
+	* src/gtk/bookmarks.c - disconnect from the site before we parse the
+	bookmarks (from Aurelien Jarno <lists@aurel32.net>)
+
 	* lib/sshv2.c - fixed crash when deleting subdirectories with the SSH2
 	protocol.
 
@@ -1548,7 +1551,7 @@
 
 	* cvsclean - added this script
 
-	* *.[ch] - added $Id: ChangeLog,v 1.146 2003/10/13 00:24:05 masneyb Exp $ tags
+	* *.[ch] - added $Id: ChangeLog,v 1.147 2003/10/13 00:41:17 masneyb Exp $ tags
 
 	* debian/* - updated files from Debian maintainer
 
