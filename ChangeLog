@@ -1,4 +1,9 @@
 2004-3-19 Brian Masney <masneyb@gftp.org>
+	* debian/gftp-text.prerm - missing debian package file
+
+	* Makefile.am - updated with EXTRA_DIST variable with the list of the
+	Debian package files
+
 	* debian/* - updated Debian package files from
 	Aurelien Jarno <aurelien@aurel32.net>
 
@@ -2333,7 +2338,7 @@
 
 	* cvsclean - added this script
 
-	* *.[ch] - added $Id: ChangeLog,v 1.244 2004/03/20 18:42:26 masneyb Exp $ tags
+	* *.[ch] - added $Id: ChangeLog,v 1.245 2004/03/20 18:48:40 masneyb Exp $ tags
 
 	* debian/* - updated files from Debian maintainer
 
