@@ -1,4 +1,6 @@
 2003-2-4 Brian Masney <masneyb@gftp.org>
+	* src/gtk/gftp-gtk.c - allow pasting a URL in the host box
+
 	* lib/Makefile.am - added ftpcommon.h to noinst_HEADERS
 
 2003-2-3 Brian Masney <masneyb@gftp.org>
@@ -2160,7 +2162,7 @@
 
 	* cvsclean - added this script
 
-	* *.[ch] - added $Id: ChangeLog,v 1.218 2004/02/05 03:15:11 masneyb Exp $ tags
+	* *.[ch] - added $Id: ChangeLog,v 1.219 2004/02/05 03:16:08 masneyb Exp $ tags
 
 	* debian/* - updated files from Debian maintainer
 
