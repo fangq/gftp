@@ -1,4 +1,7 @@
 2004-8-17 Brian Masney <masneyb@gftp.org>
+	* lib/rfc959.c (rfc959_set_file_time, rfc959_chmod) - enclose the
+	filename in "quotes"
+
 	* lib/gftp.h lib/misc.c lib/protocols.c lib/rfc2068.c lib/rfc959.c -
 	added #defines for encoding and decoding file sizes that will work
 	properly for large files (GFTP_OFF_T_HEX_PRINTF_MOD,
@@ -2741,7 +2744,7 @@
 
 	* cvsclean - added this script
 
-	* *.[ch] - added $Id: ChangeLog,v 1.306 2004/08/18 01:58:43 masneyb Exp $ tags
+	* *.[ch] - added $Id: ChangeLog,v 1.307 2004/08/18 02:09:12 masneyb Exp $ tags
 
 	* debian/* - updated files from Debian maintainer
 
