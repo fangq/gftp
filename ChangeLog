@@ -1,3 +1,19 @@
+2003-1-21 Brian Masney <masneyb@gftp.org>
+	* lib/gftp.h - added server type defines. Added server_type field to 
+	gftp_request
+
+	* lib/local.c - use S_ISDIR and S_ISLINK macros
+
+	* lib/protocols.c - (gftp_parse_ls*) - use hints from server_type for
+	parsing directory listing
+
+	* lib/rfc959.c - added function rfc959_syst. Call this on startup
+
+	* lib/protocols.c lib/rfc959.c lib/sshv2.c - pass request structure
+	to gftp_parse_ls
+
+	* lib/sshv2.c - set server_type to be GFTP_TYPE_UNIX
+
 2003-1-11 Brian Masney <masneyb@gftp.org>
 	* autogen.sh - removed --intl and --no-changelog flags to gettextize
 
@@ -447,7 +463,7 @@
 
 	* cvsclean - added this script
 
-	* *.[ch] - added $Id: ChangeLog,v 1.52 2003/01/11 15:49:01 masneyb Exp $ tags
+	* *.[ch] - added $Id: ChangeLog,v 1.53 2003/01/21 23:46:01 masneyb Exp $ tags
 
 	* debian/* - updated files from Debian maintainer
 
