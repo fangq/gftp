@@ -1,4 +1,7 @@
 2004-3-19 Brian Masney <masneyb@gftp.org>
+	* debian/* - updated Debian package files from
+	Aurelien Jarno <aurelien@aurel32.net>
+
 	* lib/gftp.h - if _LARGEFILE_SOURCE is defined, but _LARGEFILE64_SOURCE
 	is not defined, define it
 
@@ -2330,7 +2333,7 @@
 
 	* cvsclean - added this script
 
-	* *.[ch] - added $Id: ChangeLog,v 1.243 2004/03/19 21:39:39 masneyb Exp $ tags
+	* *.[ch] - added $Id: ChangeLog,v 1.244 2004/03/20 18:42:26 masneyb Exp $ tags
 
 	* debian/* - updated files from Debian maintainer
 
