@@ -1,5 +1,8 @@
 2003-12-28 Brian Masney <masneyb@gftp.org>
+	* src/gtk/gtkui.c src/text/textui.c - necessary UI related files for
+	each port of gftp. The uicommon code will call these functions.
 
+2003-12-28 Brian Masney <masneyb@gftp.org>
 	**** NOTE: this commit breaks a lot of functionality in gftp. I ****
 	**** still have more work to do on this. Please don't email me  ****
 	**** saying that the CVS code is broken.                        ****
@@ -1882,7 +1885,7 @@
 
 	* cvsclean - added this script
 
-	* *.[ch] - added $Id: ChangeLog,v 1.187 2003/12/28 16:01:57 masneyb Exp $ tags
+	* *.[ch] - added $Id: ChangeLog,v 1.188 2003/12/28 16:04:28 masneyb Exp $ tags
 
 	* debian/* - updated files from Debian maintainer
 
