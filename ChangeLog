@@ -1,4 +1,10 @@
 2003-11-9 Brian Masney <masneyb@gftp.org>
+	* lib/options.h lib/protoocols.c - added enable_ipv6 option. 
+
+	* lib/rfc959.c lib/protocols.c - if there is an error creating a socket,
+	log a more informative error about what kind of socket was attempted
+	to be created.
+
 	* debian/* - updated Debian package files from 
 	Aurelien Jarno <aurel32@debian.org>
 
@@ -1745,7 +1751,7 @@
 
 	* cvsclean - added this script
 
-	* *.[ch] - added $Id: ChangeLog,v 1.172 2003/11/10 01:42:37 masneyb Exp $ tags
+	* *.[ch] - added $Id: ChangeLog,v 1.173 2003/11/10 01:59:50 masneyb Exp $ tags
 
 	* debian/* - updated files from Debian maintainer
 
