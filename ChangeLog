@@ -1,3 +1,9 @@
+2003-12-7 Brian Masney <masneyb@gftp.org>
+	* configure.in acinclude.m4 lib/misc.c - added AC_INTL_PRINTF macro.
+	If the printf family of functions supports %'ld, then HAVE_INTL_PRINTF
+	will be defined. The appropriate version of insert_commas() can be
+	used.
+
 2003-12-4 Brian Masney <masneyb@gftp.org>
 	* src/gftp.in - check for the bin_dir for the binary location
 
@@ -1801,7 +1807,7 @@
 
 	* cvsclean - added this script
 
-	* *.[ch] - added $Id: ChangeLog,v 1.178 2003/12/05 00:21:14 masneyb Exp $ tags
+	* *.[ch] - added $Id: ChangeLog,v 1.179 2003/12/07 17:25:13 masneyb Exp $ tags
 
 	* debian/* - updated files from Debian maintainer
 
