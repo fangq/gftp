@@ -1,4 +1,16 @@
 2004-7-26 Brian Masney <masneyb@gftp.org>
+	* lib/config_file.c lib/local.c lib/ftps.c lib/gftp.h lib/httpcommon.h
+	lib/https.c lib/misc.c lib/protocols.c lib/pty.c lib/rfc2068.c
+	lib/rfc959.c lib/sshv2.c - various fixes found through a static code
+	analysis checker. (some signed/unsigned fixes, removed unneeded casts,
+	removed unneeded variables, more consistency, largefile fixes). Thanks
+	to Derek M Jones for running the static code analysis for me
+
+	* lib/cache.c - s/remove/del_entry/g
+
+	* lib/bookmark.c lib/protocols.c (gftp_parse_bookmark) - allow
+	the third parameter of this function to be a NULL pointer
+
 	* lib/pty.c - give the grantpt pty implementation more priority over
 	using openpty()
 
@@ -2639,7 +2651,7 @@
 
 	* cvsclean - added this script
 
-	* *.[ch] - added $Id: ChangeLog,v 1.293 2004/07/26 09:51:07 masneyb Exp $ tags
+	* *.[ch] - added $Id: ChangeLog,v 1.294 2004/07/27 02:46:54 masneyb Exp $ tags
 
 	* debian/* - updated files from Debian maintainer
 
