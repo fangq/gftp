@@ -1,4 +1,6 @@
 2003-2-2 Brian Masney <masneyb@gftp.org>
+	* docs/website/index.html.in - updated main gftp website
+
 	* lib/config_file.c lib/gftp.h src/uicommon/gftpui.c 
 	src/gtk/gftp-gtk.c - updated the format of the config file
 	write_functions so that the value isn't written to a file descriptor.
@@ -2146,7 +2148,7 @@
 
 	* cvsclean - added this script
 
-	* *.[ch] - added $Id: ChangeLog,v 1.214 2004/02/03 02:27:55 masneyb Exp $ tags
+	* *.[ch] - added $Id: ChangeLog,v 1.215 2004/02/03 02:34:00 masneyb Exp $ tags
 
 	* debian/* - updated files from Debian maintainer
 
