@@ -1,3 +1,7 @@
+2005-3-31 Brian Masney <masneyb@gftp.org>
+	* src/gtk/transfer.c (check_done_process) - make sure the local file is
+	not removed if the editor is set to a non-existent editor
+
 2005-3-29 Brian Masney <masneyb@gftp.org>
 	* src/text/gftp-text.c src/gtk/options_dialog.c - compiler fixes for
 	GTK+ 1.2
@@ -3296,7 +3300,7 @@
 
 	* cvsclean - added this script
 
-	* *.[ch] - added $Id: ChangeLog,v 1.409 2005/03/29 11:55:13 masneyb Exp $ tags
+	* *.[ch] - added $Id: ChangeLog,v 1.410 2005/03/31 21:49:20 masneyb Exp $ tags
 
 	* debian/* - updated files from Debian maintainer
 
