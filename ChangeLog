@@ -1,4 +1,8 @@
 2004-11-1 Brian Masney <masneyb@gftp.org>
+	* lib/config_file.c (gftp_write_bookmarks_file) - if a folder has no
+	children, make sure the entry has a / appended to the end of the
+	description. Don't write out any of the other unneeded fields
+
 	* src/gtk/bookmarks.c (build_bookmarks_tree) - fixes for adding toplevel
 	folders that are empty
 
@@ -3002,7 +3006,7 @@
 
 	* cvsclean - added this script
 
-	* *.[ch] - added $Id: ChangeLog,v 1.356 2004/11/02 01:59:23 masneyb Exp $ tags
+	* *.[ch] - added $Id: ChangeLog,v 1.357 2004/11/02 02:15:14 masneyb Exp $ tags
 
 	* debian/* - updated files from Debian maintainer
 
