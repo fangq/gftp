@@ -1,4 +1,7 @@
 2003-1-4 Brian Masney <masneyb@gftp.org>
+	* src/text/Makefile.am src/gtk/Makefile.am - added @LIBINTL@ to LDADD
+	line of Makefile.am
+
 	* configure.in - added src/uicommon/Makefile to the list of files to
 	be generated. 
 
@@ -1911,7 +1914,7 @@
 
 	* cvsclean - added this script
 
-	* *.[ch] - added $Id: ChangeLog,v 1.193 2004/01/04 17:41:02 masneyb Exp $ tags
+	* *.[ch] - added $Id: ChangeLog,v 1.194 2004/01/04 17:52:42 masneyb Exp $ tags
 
 	* debian/* - updated files from Debian maintainer
 
