@@ -1,3 +1,7 @@
+2003-04-05  Duarte Loreto <happyguy_pt@hotmail.com>
+
+        * configure.in: Added "pt" to ALL_LINGUAS.
+
 2003-03-04  Yuriy Syrota  <rasta renome.rovno.ua>
 
 	* configure.in: Added Ukrainian (uk) to ALL_LINGUAS
@@ -520,7 +524,7 @@
 
 	* cvsclean - added this script
 
-	* *.[ch] - added $Id: ChangeLog,v 1.64 2003/03/04 14:56:57 rasta Exp $ tags
+	* *.[ch] - added $Id: ChangeLog,v 1.65 2003/04/05 02:25:40 dnloreto Exp $ tags
 
 	* debian/* - updated files from Debian maintainer
 
