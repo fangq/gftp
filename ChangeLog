@@ -1,3 +1,8 @@
+2003-10-27 Brian Masney <masneyb@gftp.org>
+	* TODO - the top of this file now contains a list of items that needs
+	to be completed before 2.0.16 can be released. If I missed something
+	important, please drop me an email.
+
 2003-10-26 Brian Masney <masneyb@gftp.org>
 	* lib/rfc959.c (gftp_{get,put}_next_file_chunk) - check whether or not
 	this is an ascii file transfer properly.
@@ -1637,7 +1642,7 @@
 
 	* cvsclean - added this script
 
-	* *.[ch] - added $Id: ChangeLog,v 1.161 2003/10/27 02:15:46 masneyb Exp $ tags
+	* *.[ch] - added $Id: ChangeLog,v 1.162 2003/10/27 23:06:32 masneyb Exp $ tags
 
 	* debian/* - updated files from Debian maintainer
 
