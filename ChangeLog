@@ -1,4 +1,6 @@
 2004-11-4 Brian Masney <masneyb@gftp.org>
+	* docs/sample.gftp/gftprc - updated the default config file
+
 	* src/gtk/bookmarks.c (entry_apply_changes) - more cleanups to this
 	function. Fixes for renaming bookmark entries
 
@@ -3029,7 +3031,7 @@
 
 	* cvsclean - added this script
 
-	* *.[ch] - added $Id: ChangeLog,v 1.361 2004/11/05 02:11:58 masneyb Exp $ tags
+	* *.[ch] - added $Id: ChangeLog,v 1.362 2004/11/05 02:35:31 masneyb Exp $ tags
 
 	* debian/* - updated files from Debian maintainer
 
