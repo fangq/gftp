@@ -1,3 +1,10 @@
+2004-10-4 Brian Masney <masneyb@gftp.org>
+	* lib/protocols.c (gftp_string_from_utf8,gftp_string_to_utf8) - added
+	more printf() functions whenever there is a problem converting a string
+
+	* src/gtk/gtkui_transfer.c (gftpui_ask_transfer) - make sure the
+	filename that is to be displayed to the user is encoded in UTF8
+
 2004-10-3 Brian Masney <masneyb@gftp.org>
 	* lib/protocols.c (gftp_string_to_utf8) - if the current string is
 	already in UTF-8, always return NULL, even if the iconv module is
@@ -2923,7 +2930,7 @@
 
 	* cvsclean - added this script
 
-	* *.[ch] - added $Id: ChangeLog,v 1.340 2004/10/04 02:07:33 masneyb Exp $ tags
+	* *.[ch] - added $Id: ChangeLog,v 1.341 2004/10/05 00:13:09 masneyb Exp $ tags
 
 	* debian/* - updated files from Debian maintainer
 
