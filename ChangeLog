@@ -1,4 +1,14 @@
 2002-10-07 Brian Masney <masneyb@gftp.org>
+	* lib/local.c - fixed file uploads
+
+	* lib/rfc959.c - fixed crash if you uploaded/downloaded a file that
+	you didn't have permission to
+
+	* src/gtk/transfer.c - display fixes for hostname
+
+	* autogen.sh - pass -c to automake
+
+2002-10-07 Brian Masney <masneyb@gftp.org>
         * docs/sample.gftp/gftp-mini-logo.xpm - added mini gFTP logo file
         from Debian. This can be used as a menu icon.
 
@@ -18,7 +28,7 @@
 
 	* cvsclean - added this script
 
-	* *.[ch] - added $Id: ChangeLog,v 1.15 2002/10/07 10:44:05 masneyb Exp $ tags
+	* *.[ch] - added $Id: ChangeLog,v 1.16 2002/10/08 02:19:45 masneyb Exp $ tags
 
 	* debian/* - updated files from Debian maintainer
 
