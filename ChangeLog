@@ -1,3 +1,7 @@
+2003-05-01  Hasbullah Bin Pit  <sebol@ikhlas.com>
+                                                                                
+        * configure.in(ALL_LINGUAS): Added "ms".
+
 2003-4-27 Brian Masney <masneyb@gftp.org>
 	* lib/config_file.c (gftp_config_file_read_float) - use strtod instead
 	of strtof(). ANSI C describes strtod, and C99 describes strtof(). Some
@@ -818,7 +822,7 @@
 
 	* cvsclean - added this script
 
-	* *.[ch] - added $Id: ChangeLog,v 1.76 2003/04/28 02:07:17 masneyb Exp $ tags
+	* *.[ch] - added $Id: ChangeLog,v 1.77 2003/05/01 16:02:26 sebol Exp $ tags
 
 	* debian/* - updated files from Debian maintainer
 
