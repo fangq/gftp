@@ -1,4 +1,7 @@
 2004-3-16 Brian Masney <masneyb@gftp.org>
+	* lib/ftpcommon.h lib/gftp.h lib/rfc959.c src/uicommon/gftpui.c -
+	fixes so that FXP transfers work again
+
 	* src/gtk/misc-gtk.c src/gtk/gftp-gtk.h - added destroy_dialog()
 	function
 
@@ -2283,7 +2286,7 @@
 
 	* cvsclean - added this script
 
-	* *.[ch] - added $Id: ChangeLog,v 1.233 2004/03/16 12:23:52 masneyb Exp $ tags
+	* *.[ch] - added $Id: ChangeLog,v 1.234 2004/03/16 14:50:06 masneyb Exp $ tags
 
 	* debian/* - updated files from Debian maintainer
 
