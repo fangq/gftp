@@ -1,4 +1,6 @@
 2005-2-13 Brian Masney <masneyb@gftp.org>
+	* lib/fsplib/fsplib.c - include stdint.h if HAVE_STDINT_H is defined
+
 	* lib/fsplib/fsplib.c - updated to use fsplib 0.4. Fixes compilation
 	errors under Solaris/IRIX
 
@@ -3286,7 +3288,7 @@
 
 	* cvsclean - added this script
 
-	* *.[ch] - added $Id: ChangeLog,v 1.406 2005/02/13 14:45:28 masneyb Exp $ tags
+	* *.[ch] - added $Id: ChangeLog,v 1.407 2005/02/13 14:47:40 masneyb Exp $ tags
 
 	* debian/* - updated files from Debian maintainer
 
