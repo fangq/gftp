@@ -1,3 +1,7 @@
+2002-10-07 Brian Masney <masneyb@gftp.org>
+        * docs/sample.gftp/gftp-mini-logo.xpm - added mini gFTP logo file
+        from Debian. This can be used as a menu icon.
+
 2002-10-06 Brian Masney <masneyb@gftp.org>
 	* src/gtk/delete_dialog.c, src/gtk/gftp-gtk.c, src/gtk/misc-gtk.c, 
 	src/gtk/transfer.c - Fixed dead-locks with GDK_THREADS_{ENTER,LEAVE}
@@ -14,7 +18,7 @@
 
 	* cvsclean - added this script
 
-	* *.[ch] - added $Id: ChangeLog,v 1.14 2002/10/07 10:40:35 masneyb Exp $ tags
+	* *.[ch] - added $Id: ChangeLog,v 1.15 2002/10/07 10:44:05 masneyb Exp $ tags
 
 	* debian/* - updated files from Debian maintainer
 
