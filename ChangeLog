@@ -1,4 +1,6 @@
 2003-7-25 Brian Masney <masneyb@gftp.org>
+	* configure.in - define HAVE_OPENPTY if openpty() is found in libutil
+
 	* lib/gftp.h lib/pty.c - moved including of some PTY related header
 	files to pty.c. Hopefully should fix build problems under FreeBSD
 
@@ -1377,7 +1379,7 @@
 
 	* cvsclean - added this script
 
-	* *.[ch] - added $Id: ChangeLog,v 1.120 2003/07/25 20:46:58 masneyb Exp $ tags
+	* *.[ch] - added $Id: ChangeLog,v 1.121 2003/07/25 20:56:26 masneyb Exp $ tags
 
 	* debian/* - updated files from Debian maintainer
 
