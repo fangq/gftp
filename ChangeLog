@@ -1,4 +1,6 @@
 2003-11-9 Brian Masney <masneyb@gftp.org>
+	* debian/ChangeLog - incremented version to 2.0.16
+
 	* docs/Makefile.am - clean up documentation in clean target
 
 	* docs/website/generate-gftp-website.pl docs/website/index.html.in -
@@ -1740,7 +1742,7 @@
 
 	* cvsclean - added this script
 
-	* *.[ch] - added $Id: ChangeLog,v 1.170 2003/11/09 13:11:36 masneyb Exp $ tags
+	* *.[ch] - added $Id: ChangeLog,v 1.171 2003/11/09 13:56:21 masneyb Exp $ tags
 
 	* debian/* - updated files from Debian maintainer
 
