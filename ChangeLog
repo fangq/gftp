@@ -1,4 +1,6 @@
 2004-11-9 Brian Masney <masneyb@gftp.org>
+	* debian/gftp-gtk.install - updated the path of the gftp.desktop file
+
 	* configure.in debian/changelog - updated version number to 2.0.18rc1
 
 	* TODO - updated
@@ -3048,7 +3050,7 @@
 
 	* cvsclean - added this script
 
-	* *.[ch] - added $Id: ChangeLog,v 1.366 2004/11/10 02:36:14 masneyb Exp $ tags
+	* *.[ch] - added $Id: ChangeLog,v 1.367 2004/11/10 04:17:54 masneyb Exp $ tags
 
 	* debian/* - updated files from Debian maintainer
 
