@@ -1,3 +1,7 @@
+2004-04-10  Adam Weinberger  <adamw@gnome.rog>
+
+	* en_CA.po: Added en_CA to ALL_LINGUAS.
+
 2004-4-10 Brian Masney <masneyb@gftp.org>
 	* lib/gftp.h lib/pty.c lib/sshv2.c - added gftp_exec() that will always
 	open a pseudo terminal and a separate socket pair for the stdin/stdout
@@ -2419,7 +2423,7 @@
 
 	* cvsclean - added this script
 
-	* *.[ch] - added $Id: ChangeLog,v 1.257 2004/04/10 15:14:45 masneyb Exp $ tags
+	* *.[ch] - added $Id: ChangeLog,v 1.258 2004/04/10 20:39:06 adamw Exp $ tags
 
 	* debian/* - updated files from Debian maintainer
 
