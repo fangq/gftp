@@ -1,3 +1,7 @@
+2005-2-13 Brian Masney <masneyb@gftp.org>
+	* lib/fsplib/fsplib.c - updated to use fsplib 0.4. Fixes compilation
+	errors under Solaris/IRIX
+
 2005-2-4 Brian Masney <masneyb@gftp.org>
 	* docs/website/announce.txt - updated announcement with release of
 	2.0.18
@@ -3282,7 +3286,7 @@
 
 	* cvsclean - added this script
 
-	* *.[ch] - added $Id: ChangeLog,v 1.405 2005/02/04 16:14:54 masneyb Exp $ tags
+	* *.[ch] - added $Id: ChangeLog,v 1.406 2005/02/13 14:45:28 masneyb Exp $ tags
 
 	* debian/* - updated files from Debian maintainer
 
