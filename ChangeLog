@@ -1,3 +1,10 @@
+2002-12-333 Brian Masney <masneyb@gftp.org>
+	* lib/config_file.c lib/gftp.h lib/protocols.c - removed 
+	use_default_dl_types option. This is always enabled by default now.
+
+	* src/gtk/dnd.c src/gtk/transfer.c - fix for files that should be 
+	transferred as ascii
+	
 2002-12-2 Brian Masney <masneyb@gftp.org>
 	* src/gtk/bookmarks.c (run_bookmark) - don't override the value of
 	need_userpass for SSH transfers
@@ -359,7 +366,7 @@
 
 	* cvsclean - added this script
 
-	* *.[ch] - added $Id: ChangeLog,v 1.44 2002/12/03 02:36:36 masneyb Exp $ tags
+	* *.[ch] - added $Id: ChangeLog,v 1.45 2002/12/04 02:36:05 masneyb Exp $ tags
 
 	* debian/* - updated files from Debian maintainer
 
