@@ -1,3 +1,10 @@
+2004-6-13 Brian Masney <masneyb@gftp.org>
+	* lib/gftp.h lib/misc.c src/gtk/Makefile.am src/gtk/menu-items.c
+	src/gtk/misc-gtk.c src/text/Makefile.am src/uicommon/Makefile.am
+	src/uicommon/gftpui.c - added support to override the value of
+	SHARE_DIR during runtime with the GFTP_SHARE_DIR environment
+	variable
+
 2004-6-6 Brian Masney <masneyb@gftp.org>
 	* lib/protocols.c (gftp_set_username) - allow a NULL username
 
@@ -2492,7 +2499,7 @@
 
 	* cvsclean - added this script
 
-	* *.[ch] - added $Id: ChangeLog,v 1.268 2004/06/07 02:02:49 masneyb Exp $ tags
+	* *.[ch] - added $Id: ChangeLog,v 1.269 2004/06/13 14:25:18 masneyb Exp $ tags
 
 	* debian/* - updated files from Debian maintainer
 
