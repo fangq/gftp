@@ -1,4 +1,7 @@
 2004-9-6 Brian Masney <masneyb@gftp.org>
+	* autogen.sh - updated autogen.sh so that it will work with newer
+	versions of automake/autoconf
+
 	* src/gtk/bookmarks.c - make sure that edit_bookmarks_dialog is
 	initialized to NULL
 
@@ -2791,7 +2794,7 @@
 
 	* cvsclean - added this script
 
-	* *.[ch] - added $Id: ChangeLog,v 1.315 2004/09/07 01:01:04 masneyb Exp $ tags
+	* *.[ch] - added $Id: ChangeLog,v 1.316 2004/09/07 23:30:40 masneyb Exp $ tags
 
 	* debian/* - updated files from Debian maintainer
 
