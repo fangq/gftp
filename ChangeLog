@@ -1,3 +1,13 @@
+2003-7-10 Brian Masney <masneyb@gftp.org>
+	* lib/misc.c (insert_commas) - improved calculating # of digits
+	in number. (Not sure if this worked properly for long long's, aka
+	off_t when _LARGEFILE_SOURCE is defined)
+
+	* src/gtk/transfer.c (update_file_status) - changed type of remaining
+	field to be off_t. (hopefully fixes >2.1GB problem)
+
+	* lib/protocols.c (gftp_calc_kbs) - improved throttling module.
+
 2003-7-9 Brian Masney <masneyb@gftp.org>
 	* lib/sshv2.c - if we are logging in to the server, and the message 
 	size is too big from the server, assume that an error message follows
@@ -1247,7 +1257,7 @@
 
 	* cvsclean - added this script
 
-	* *.[ch] - added $Id: ChangeLog,v 1.111 1997/01/01 09:22:34 masneyb Exp $ tags
+	* *.[ch] - added $Id: ChangeLog,v 1.112 2003/07/11 01:48:07 masneyb Exp $ tags
 
 	* debian/* - updated files from Debian maintainer
 
