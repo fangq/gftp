@@ -1,4 +1,10 @@
 2003-6-8 Brian Masney <masneyb@gftp.org>
+	* lib/sslcommon.c - added entropy_len option. Added
+	gftp_ssl_get_index(). Use SSL_get_ex_data() so that we can get the
+	request structure, and error messages can be logged properly. Changed
+	the verify depth from 4 to 9
+
+2003-6-8 Brian Masney <masneyb@gftp.org>
 	* lib/gftp.h lib/sslcommon.c - added ssl_register_module(). This
 	function registers the configuration variables for the SSL engine.
 	Right now, the only variable is the entropy source
@@ -932,7 +938,7 @@
 
 	* cvsclean - added this script
 
-	* *.[ch] - added $Id: ChangeLog,v 1.84 2003/06/09 01:07:32 masneyb Exp $ tags
+	* *.[ch] - added $Id: ChangeLog,v 1.85 2003/06/09 02:03:36 masneyb Exp $ tags
 
 	* debian/* - updated files from Debian maintainer
 
