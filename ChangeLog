@@ -1,4 +1,8 @@
 2004-11-4 Brian Masney <masneyb@gftp.org>
+	* lib/options.h src/gtk/gftp-gtk.c src/gtk/misc-gtk.c - whenever gftp
+	is started, show in the toolbar the last connection details (except the
+	password)
+
 	* src/gtk/gftp-gtk.c - added mnemonics for the host and user field
 	in the toolbar
 
@@ -3034,7 +3038,7 @@
 
 	* cvsclean - added this script
 
-	* *.[ch] - added $Id: ChangeLog,v 1.363 2004/11/05 03:05:26 masneyb Exp $ tags
+	* *.[ch] - added $Id: ChangeLog,v 1.364 2004/11/05 03:27:23 masneyb Exp $ tags
 
 	* debian/* - updated files from Debian maintainer
 
