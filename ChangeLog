@@ -1,4 +1,7 @@
 2003-11-30 Brian Masney <masneyb@gftp.org>
+	* lib/sshv2.c - cleaned up some of the code. Added a temporary fix for
+	an upload crash that is happening on FreeBSD. 
+
 	* src/gtk/transfer.c - shows status information in title bar. (patch
 	from Jamil Geor <jamil_geor@yahoo.co.nz>, cleaned up by me some)
 
@@ -1776,7 +1779,7 @@
 
 	* cvsclean - added this script
 
-	* *.[ch] - added $Id: ChangeLog,v 1.175 2003/11/30 19:35:16 masneyb Exp $ tags
+	* *.[ch] - added $Id: ChangeLog,v 1.176 2003/12/01 01:21:13 masneyb Exp $ tags
 
 	* debian/* - updated files from Debian maintainer
 
