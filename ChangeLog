@@ -1,3 +1,7 @@
+2003-12-10 Brian Masney <masneyb@gftp.org>
+	* lib/rfc2068.c - set the default file attributes to -rw-r--r-- for
+	all files.
+
 2003-12-7 Brian Masney <masneyb@gftp.org>
 	* lib/options.h lib/config_file.c - removed scramble_passwords
 	option. Instead, make this the default action all the time. This
@@ -1826,7 +1830,7 @@
 
 	* cvsclean - added this script
 
-	* *.[ch] - added $Id: ChangeLog,v 1.182 2003/12/10 02:22:55 masneyb Exp $ tags
+	* *.[ch] - added $Id: ChangeLog,v 1.183 2003/12/13 19:26:21 masneyb Exp $ tags
 
 	* debian/* - updated files from Debian maintainer
 
