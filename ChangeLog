@@ -1,3 +1,10 @@
+2004-5-16 Brian Masney <masneyb@gftp.org>
+	* src/uicommon/gftpui.c lib/gftp.h - added
+	gftpui_protocol_update_timeout()
+
+	* lib/protocols.c - 64 bit fixes. Check to see if the remote site
+	disconnected 
+
 2004-4-14 Brian Masney <masneyb@gftp.org>
 	* lib/protocols.c lib/rfc959.c src/gtk/transfer.c - AMD64 fixes
 
@@ -2448,7 +2455,7 @@
 
 	* cvsclean - added this script
 
-	* *.[ch] - added $Id: ChangeLog,v 1.260 2004/04/16 02:11:22 masneyb Exp $ tags
+	* *.[ch] - added $Id: ChangeLog,v 1.261 2004/05/16 12:52:12 masneyb Exp $ tags
 
 	* debian/* - updated files from Debian maintainer
 
