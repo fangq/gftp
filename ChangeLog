@@ -1,3 +1,9 @@
+2005-2-4 Brian Masney <masneyb@gftp.org>
+	* lib/misc.c (gftp_get_transfer_action) - added the following FIXME
+	comments: add code to compare the file times and make a decision based
+	on that. Also if overwrite_default is enabled and the file sizes/dates
+	are the same, then skip the file
+
 2005-1-25 Brian Masney <masneyb@gftp.org>
 	* src/gtk/gtkui.c (gftpui_run_function_callback) - after the needed
 	information is retrieved from the dialog, destroy the dialog before
@@ -3264,7 +3270,7 @@
 
 	* cvsclean - added this script
 
-	* *.[ch] - added $Id: ChangeLog,v 1.401 2005/01/26 03:22:05 masneyb Exp $ tags
+	* *.[ch] - added $Id: ChangeLog,v 1.402 2005/02/04 14:52:26 masneyb Exp $ tags
 
 	* debian/* - updated files from Debian maintainer
 
