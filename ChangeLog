@@ -1,3 +1,8 @@
+2004-11-9 Brian Masney <masneyb@gftp.org>
+	* configure.in debian/changelog - updated version number to 2.0.18rc1
+
+	* TODO - updated
+
 2004-11-7 Brian Masney <masneyb@gftp.org>
 	* ChangeLog-old - updated with a summary of list of changes since 2.0.17
 
@@ -3043,7 +3048,7 @@
 
 	* cvsclean - added this script
 
-	* *.[ch] - added $Id: ChangeLog,v 1.365 2004/11/07 15:58:39 masneyb Exp $ tags
+	* *.[ch] - added $Id: ChangeLog,v 1.366 2004/11/10 02:36:14 masneyb Exp $ tags
 
 	* debian/* - updated files from Debian maintainer
 
