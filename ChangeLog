@@ -1,3 +1,7 @@
+2003-09-23  Taneem Ahmed  <taneem@bengalinux.org>
+
+	* configure.in: Added "bn" to ALL_LINGUAS.
+
 2003-9-21 Brian Masney <masneyb@gftp.org>
 	* src/gtk/menu-items.c (dosave_directory_listing) - fixed a bug that 
 	would occur when saving directory listings to a file, the last filename
@@ -1517,7 +1521,7 @@
 
 	* cvsclean - added this script
 
-	* *.[ch] - added $Id: ChangeLog,v 1.141 2003/09/22 10:40:06 masneyb Exp $ tags
+	* *.[ch] - added $Id: ChangeLog,v 1.142 2003/09/23 04:15:11 taneem Exp $ tags
 
 	* debian/* - updated files from Debian maintainer
 
