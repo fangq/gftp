@@ -1,3 +1,8 @@
+2003-8-6 Brian Masney <masneyb@gftp.org>
+	* lib/misc.c (gftp_build_path) - fixed initial path beginning with //.
+	(expand_path) - when the path is empty at the end, set it to /. This
+	would happen for directories like /etc/..
+
 2003-8-4 Brian Masney <masneyb@gftp.org>
 	* src/gtk/transfer.c (update_file_status) - fix possible division by 0
 
@@ -1433,7 +1438,7 @@
 
 	* cvsclean - added this script
 
-	* *.[ch] - added $Id: ChangeLog,v 1.127 2003/08/05 01:54:02 masneyb Exp $ tags
+	* *.[ch] - added $Id: ChangeLog,v 1.128 2003/08/06 20:31:30 masneyb Exp $ tags
 
 	* debian/* - updated files from Debian maintainer
 
