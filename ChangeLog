@@ -1,3 +1,6 @@
+2002-12-11 Brian Masney <masneyb@gftp.org>
+	* configure.in - fix for enable/disable gtkport, textport and gtk20
+
 2002-12-10 Brian Masney <masneyb@gftp.org>
 	* configure.in - check for grantpt function
 
@@ -392,7 +395,7 @@
 
 	* cvsclean - added this script
 
-	* *.[ch] - added $Id: ChangeLog,v 1.48 2002/12/11 02:33:32 masneyb Exp $ tags
+	* *.[ch] - added $Id: ChangeLog,v 1.49 2002/12/12 01:48:44 masneyb Exp $ tags
 
 	* debian/* - updated files from Debian maintainer
 
