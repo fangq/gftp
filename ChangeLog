@@ -1,3 +1,6 @@
+2004-6-22 Brian Masney <masneyb@gftp.org>
+	* lib/sshv2.c - did more code cleanups
+
 2004-6-15 Brian Masney <masneyb@gftp.org>
 	* lib/protocols.c - added supported for multiline VMS directory
 	listings. Also, parse the date correctly for single line VMS
@@ -2517,7 +2520,7 @@
 
 	* cvsclean - added this script
 
-	* *.[ch] - added $Id: ChangeLog,v 1.271 2004/06/16 02:57:02 masneyb Exp $ tags
+	* *.[ch] - added $Id: ChangeLog,v 1.272 2004/06/22 12:16:11 masneyb Exp $ tags
 
 	* debian/* - updated files from Debian maintainer
 
