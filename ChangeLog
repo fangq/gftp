@@ -1,4 +1,7 @@
 2003-10-26 Brian Masney <masneyb@gftp.org>
+	* lib/rfc959.c - convert the PASS command from UTF8 using 
+	gftp_convert_from_utf8()
+
 	* src/gtk/gftp-gtk.h src/gtk/transfer.c - (create_transfer, 
 	transfer_done) - added more checks whenever a transfer is created and
 	stopped to make sure we don't log into the same remote host twice. This
@@ -1631,7 +1634,7 @@
 
 	* cvsclean - added this script
 
-	* *.[ch] - added $Id: ChangeLog,v 1.159 2003/10/27 01:22:45 masneyb Exp $ tags
+	* *.[ch] - added $Id: ChangeLog,v 1.160 2003/10/27 01:40:06 masneyb Exp $ tags
 
 	* debian/* - updated files from Debian maintainer
 
