@@ -1,4 +1,7 @@
 2004-8-17 Brian Masney <masneyb@gftp.org>
+	* lib/sshv2.c - added sshv2_open_file(). sshv2_get_file() and
+	sshv2_put_file() now use this function
+
 	* src/gtk/gftp-gtk.c - removed local shortcuts for Disconnect
 	and Open URL. These conflicted with other items
 
@@ -2753,7 +2756,7 @@
 
 	* cvsclean - added this script
 
-	* *.[ch] - added $Id: ChangeLog,v 1.310 2004/08/18 02:52:19 masneyb Exp $ tags
+	* *.[ch] - added $Id: ChangeLog,v 1.311 2004/08/18 03:19:23 masneyb Exp $ tags
 
 	* debian/* - updated files from Debian maintainer
 
