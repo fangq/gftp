@@ -1,4 +1,11 @@
 2004-3-17 Brian Masney <masneyb@gftp.org>
+	* lib/ftpcommon.h lib/ftps.c - removed encrypted_connection variable
+	from the rfc959_parms structure
+
+	* lib/rfc959.c (rfc959_copy_param_options) - fix for FTPS protocol
+	so that the proper read/write function is setup whenever the request
+	structure is copied
+
 	* lib/sslcommon.c - fix so that the option verify_ssl_peer can be
 	toggled while gftp is running and on a per connection basis
 
@@ -2309,7 +2316,7 @@
 
 	* cvsclean - added this script
 
-	* *.[ch] - added $Id: ChangeLog,v 1.238 2004/03/17 18:01:47 masneyb Exp $ tags
+	* *.[ch] - added $Id: ChangeLog,v 1.239 2004/03/17 18:40:40 masneyb Exp $ tags
 
 	* debian/* - updated files from Debian maintainer
 
