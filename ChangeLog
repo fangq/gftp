@@ -1,4 +1,8 @@
 2004-7-19 Brian Masney <masneyb@gftp.org>
+	* src/gtk/delete_dialog.c src/gtk/transfer.c src/gtk/gftp-gtk.h -
+	added gftp_gtk_get_subdirs() to get the list of subdirectories in a
+	child thread
+
 	* src/gtk/gftp-gtk.c src/gtk/gftp-gtk.h - renamed some functions so that
 	they are clearer on what they do. Did some small code cleanups
 
@@ -2584,7 +2588,7 @@
 
 	* cvsclean - added this script
 
-	* *.[ch] - added $Id: ChangeLog,v 1.283 2004/07/19 22:41:42 masneyb Exp $ tags
+	* *.[ch] - added $Id: ChangeLog,v 1.284 2004/07/19 23:09:23 masneyb Exp $ tags
 
 	* debian/* - updated files from Debian maintainer
 
