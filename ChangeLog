@@ -1,4 +1,7 @@
 2003-12-10 Brian Masney <masneyb@gftp.org>
+	* lib/rfc959.c - fix IPv6 compile problem when IPv6 support is not
+	available on the system.
+
 	* lib/gftp.h src/text/gftp-text.h src/gtk/gftp-gtk.h - added
 	GFTP_LOG_FUNCTION_ATTRIBUTES that is only defined when compiled
 	against gcc. When this is set, it will specify the function is
@@ -1840,7 +1843,7 @@
 
 	* cvsclean - added this script
 
-	* *.[ch] - added $Id: ChangeLog,v 1.185 2003/12/13 20:52:12 masneyb Exp $ tags
+	* *.[ch] - added $Id: ChangeLog,v 1.186 2003/12/13 21:01:49 masneyb Exp $ tags
 
 	* debian/* - updated files from Debian maintainer
 
