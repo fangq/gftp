@@ -1,4 +1,10 @@
 2004-11-1 Brian Masney <masneyb@gftp.org>
+	* src/gtk/transfer.c (update_file_status) - if the % transferred goes
+	over 100%, then set the update string to unknown percentage transfered.
+	This will occur whenever the reported transfer size is different than
+	what is actually being transfered. This occurs whenever a symlink is
+	being transfered
+
 	* lib/protocols.c (gftp_parse_ls_novell) - fixes for parsing directory
 	listings that have a space in their username
 
@@ -2979,7 +2985,7 @@
 
 	* cvsclean - added this script
 
-	* *.[ch] - added $Id: ChangeLog,v 1.351 2004/11/01 11:07:29 masneyb Exp $ tags
+	* *.[ch] - added $Id: ChangeLog,v 1.352 2004/11/02 00:19:09 masneyb Exp $ tags
 
 	* debian/* - updated files from Debian maintainer
 
