@@ -1,3 +1,6 @@
+2003-02-21  Pablo Saratxaga  <pablo@mandrakesoft.com>
+	* configure.in: Added Catalan (ca) to ALL_LINGUAS
+
 2003-2-17 Brian Masney <masneyb@gftp.org>
 	* lib/protocols.c lib/rfc959.c - added VMS directory listing support
 
@@ -496,7 +499,7 @@
 
 	* cvsclean - added this script
 
-	* *.[ch] - added $Id: ChangeLog,v 1.59 2003/02/17 22:42:14 masneyb Exp $ tags
+	* *.[ch] - added $Id: ChangeLog,v 1.60 2003/02/21 20:15:56 pablo Exp $ tags
 
 	* debian/* - updated files from Debian maintainer
 
