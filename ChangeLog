@@ -1,3 +1,29 @@
+2003-4-23 Brian Masney <masneyb@gftp.org>
+	* Makefile.am - removed config.rpath from EXTRA_DIST
+
+	* configure.in - added 'sr' to ALL_LINGUAS. Incremented
+	version to 2.0.15 (will be a little while before this is released.
+	Still have lots to do)
+
+	* docs/sample.gftp/gftprc - removed old unused SSH options. These were
+	used by the SSH protocol I ripped out
+
+	* lib/config_file.c - fix for gftp_set_request_option(). Implemented 
+	gftp_lookup_request_options(). Overriding of configuration options now 
+	works across the board :)
+
+	* lib/protocols.c - extra checks for freeing memory
+
+	* src/text/gftp-text.c - renamed ssh_use_sftp_subsys to the proper
+	name of sshv2_use_sftp_subsys
+
+	* src/gtk/transfer.c - renamed append_file_transfers option
+	to the proper name of append_transfers. Also, added quick fix for 
+	start_file_transfers option that is still missing
+
+	* debian/gftp-text.postinst - this will add add an alternative for the
+	ftp command and point it to gftp-text
+
 2003-4-21 Brian Masney <masneyb@gftp.org>
 	* lib/gftp.h - added ui_cancel_function to struct gftp_option_type_var
 
@@ -741,7 +767,7 @@
 
 	* cvsclean - added this script
 
-	* *.[ch] - added $Id: ChangeLog,v 1.72 2003/04/22 01:42:05 masneyb Exp $ tags
+	* *.[ch] - added $Id: ChangeLog,v 1.73 2003/04/24 02:21:54 masneyb Exp $ tags
 
 	* debian/* - updated files from Debian maintainer
 
