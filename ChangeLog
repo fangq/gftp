@@ -1,3 +1,7 @@
+2004-9-6 Brian Masney <masneyb@gftp.org>
+	* src/gtk/bookmarks.c - make sure that edit_bookmarks_dialog is
+	initialized to NULL
+
 2004-8-21 Brian Masney <masneyb@gftp.org>
 	* lib/gftp.h lib/options.h lib/protocols.c - added
 	gftp_protocol_default_port() that will return the default port for
@@ -2787,7 +2791,7 @@
 
 	* cvsclean - added this script
 
-	* *.[ch] - added $Id: ChangeLog,v 1.314 2004/08/21 15:49:34 masneyb Exp $ tags
+	* *.[ch] - added $Id: ChangeLog,v 1.315 2004/09/07 01:01:04 masneyb Exp $ tags
 
 	* debian/* - updated files from Debian maintainer
 
