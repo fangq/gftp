@@ -1,4 +1,7 @@
 2003-11-9 Brian Masney <masneyb@gftp.org>
+	* debian/* - updated Debian package files from 
+	Aurelien Jarno <aurel32@debian.org>
+
 	* debian/ChangeLog - incremented version to 2.0.16
 
 	* docs/Makefile.am - clean up documentation in clean target
@@ -1742,7 +1745,7 @@
 
 	* cvsclean - added this script
 
-	* *.[ch] - added $Id: ChangeLog,v 1.171 2003/11/09 13:56:21 masneyb Exp $ tags
+	* *.[ch] - added $Id: ChangeLog,v 1.172 2003/11/10 01:42:37 masneyb Exp $ tags
 
 	* debian/* - updated files from Debian maintainer
 
