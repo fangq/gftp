@@ -1,3 +1,11 @@
+2004-3-17 Brian Masney <masneyb@gftp.org>
+	* lib/rfc2068.c (parse_html_line) - fix for parsing file sizes
+
+	* ChangeLog-old - updated with summary of changes since 2.0.16
+
+	* docs/website/index.html.in - updated the list of translations
+	available
+
 2004-3-16 Brian Masney <masneyb@gftp.org>
 	* lib/ftpcommon.h lib/gftp.h lib/rfc959.c src/uicommon/gftpui.c -
 	fixes so that FXP transfers work again
@@ -2286,7 +2294,7 @@
 
 	* cvsclean - added this script
 
-	* *.[ch] - added $Id: ChangeLog,v 1.234 2004/03/16 14:50:06 masneyb Exp $ tags
+	* *.[ch] - added $Id: ChangeLog,v 1.235 2004/03/17 11:59:25 masneyb Exp $ tags
 
 	* debian/* - updated files from Debian maintainer
 
