@@ -1,3 +1,7 @@
+2005-07-21  Pawan Chitrakar  <pawan@nplinux.org>
+
+	* configure.in: Added ne in ALL_LINGUAS
+
 2005-06-09  Ignacio Casal Quinteiro  <nacho.resa@gmail.com>
 
 	* configure.in: Added 'gl' to ALL_LINGUAS.
@@ -3312,7 +3316,7 @@
 
 	* cvsclean - added this script
 
-	* *.[ch] - added $Id: ChangeLog,v 1.413 2005/06/09 12:32:13 icq Exp $ tags
+	* *.[ch] - added $Id: ChangeLog,v 1.414 2005/07/21 06:42:12 pachimho Exp $ tags
 
 	* debian/* - updated files from Debian maintainer
 
