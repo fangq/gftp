@@ -1,3 +1,7 @@
+2005-12-06  Kjartan Maraas  <kmaraas@gnome.org>
+
+	* configure.in: Add nb to ALL_LINGUAS.
+
 2005-07-21  Pawan Chitrakar  <pawan@nplinux.org>
 
 	* configure.in: Added ne in ALL_LINGUAS
@@ -3316,7 +3320,7 @@
 
 	* cvsclean - added this script
 
-	* *.[ch] - added $Id: ChangeLog,v 1.414 2005/07/21 06:42:12 pachimho Exp $ tags
+	* *.[ch] - added $Id: ChangeLog,v 1.415 2005/12/06 21:47:23 kmaraas Exp $ tags
 
 	* debian/* - updated files from Debian maintainer
 
