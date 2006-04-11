@@ -1,3 +1,6 @@
+2006-4-10 Brian Masney <masneyb@gftp.org>
+	* configure.in - added he to ALL_LINGUAS
+
 2006-03-31  Žygimantas Beručka  <zygis@gnome.org>
 
 	* configure.in: Added lt to ALL_LINGUAS.
@@ -3324,7 +3327,7 @@
 
 	* cvsclean - added this script
 
-	* *.[ch] - added $Id: ChangeLog,v 1.416 2006/03/31 14:24:57 zygis Exp $ tags
+	* *.[ch] - added $Id: ChangeLog,v 1.417 2006/04/11 00:17:45 masneyb Exp $ tags
 
 	* debian/* - updated files from Debian maintainer
 
