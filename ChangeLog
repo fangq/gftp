@@ -1,4 +1,7 @@
 2006-5-14 Brian Masney <masneyb@gftp.org>
+	* lib/pty.c (_gftp_ptym_open) - fixes for using the grantpt() function
+	under HP/UX. (from Allyn Fratkin <allyn@fratkin.com>) (closes #301979)
+
 	* lib/fsplib/fsplib.c lib/fsplib/fsplib.h - updated with FSPLIB 0.8
 
 	* lib/fsplib/lock.c lib/pty.c - compile fixes under NetBSD 
@@ -3338,7 +3341,7 @@
 
 	* cvsclean - added this script
 
-	* *.[ch] - added $Id: ChangeLog,v 1.420 2006/05/14 16:40:53 masneyb Exp $ tags
+	* *.[ch] - added $Id: ChangeLog,v 1.421 2006/05/14 16:44:19 masneyb Exp $ tags
 
 	* debian/* - updated files from Debian maintainer
 
