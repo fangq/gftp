@@ -1,4 +1,7 @@
 2006-5-14 Brian Masney <masneyb@gftp.org>
+	* docs/sample.gftp/bookmarks - added Mandriva bookmarks
+	(from mpol@gmx.net) (closes #322942)
+
 	* docs/gftp.1 - fixed typo in man page (from Aurelien Jarno
 	<aurelien@aurel32.net>) (closes #300721)
 
@@ -3352,7 +3355,7 @@
 
 	* cvsclean - added this script
 
-	* *.[ch] - added $Id: ChangeLog,v 1.424 2006/05/14 17:08:11 masneyb Exp $ tags
+	* *.[ch] - added $Id: ChangeLog,v 1.425 2006/05/14 17:18:12 masneyb Exp $ tags
 
 	* debian/* - updated files from Debian maintainer
 
