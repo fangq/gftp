@@ -1,3 +1,7 @@
+2006-5-14 Brian Masney <masneyb@gftp.org>
+	* lib/fsplib/lock.c lib/pty.c - compile fixes under NetBSD 
+	(from Matthias Scheler tron@zhadum.de>) (closes #168984)
+
 2006-04-17  Kjartan Maraas  <kmaraas@gnome.org>
 
 	* configure.in: Remove obsolete entry for no_NO.
@@ -3332,7 +3336,7 @@
 
 	* cvsclean - added this script
 
-	* *.[ch] - added $Id: ChangeLog,v 1.418 2006/04/17 12:00:22 kmaraas Exp $ tags
+	* *.[ch] - added $Id: ChangeLog,v 1.419 2006/05/14 16:28:59 masneyb Exp $ tags
 
 	* debian/* - updated files from Debian maintainer
 
