@@ -1,4 +1,7 @@
 2006-6-22 Brian Masney <masneyb@gftp.org>
+	* gftp.spec.in - updated the install path for the desktop file
+	(closes #171711)
+
 	* src/gtk/gftp-gtk.c (CreateMenus) - updated the shortcut to the
 	Add Bookmark dialog (closes #301310)
 
@@ -3387,7 +3390,7 @@
 
 	* cvsclean - added this script
 
-	* *.[ch] - added $Id: ChangeLog,v 1.434 2006/06/23 01:38:35 masneyb Exp $ tags
+	* *.[ch] - added $Id: ChangeLog,v 1.435 2006/06/23 01:41:23 masneyb Exp $ tags
 
 	* debian/* - updated files from Debian maintainer
 
