@@ -1,4 +1,7 @@
 2006-6-22 Brian Masney <masneyb@gftp.org>
+	* lib/rfc959.c (rfc959_syst) - disable the show_hidden_files and
+	resolve_symlinks options when connecting to a VMS server
+
 	* lib/pty.c (_gftp_ptys_open) - fixes for setting up the slave pty
 	under HPUX (closes #303066)
 
@@ -3381,7 +3384,7 @@
 
 	* cvsclean - added this script
 
-	* *.[ch] - added $Id: ChangeLog,v 1.432 2006/06/23 01:35:18 masneyb Exp $ tags
+	* *.[ch] - added $Id: ChangeLog,v 1.433 2006/06/23 01:36:53 masneyb Exp $ tags
 
 	* debian/* - updated files from Debian maintainer
 
