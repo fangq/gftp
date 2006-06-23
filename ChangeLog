@@ -1,4 +1,7 @@
 2006-6-22 Brian Masney <masneyb@gftp.org>
+	* src/gtk/gtkui.c (gftpui_prompt_username) - don't create the widget as
+	a password widget (closes #313746)
+
 	* src/gtk/bookmarks.c (new_item_entry) - fixed the title of the new item
 	dialog (closes #329660)
 
@@ -3375,7 +3378,7 @@
 
 	* cvsclean - added this script
 
-	* *.[ch] - added $Id: ChangeLog,v 1.430 2006/06/23 01:24:27 masneyb Exp $ tags
+	* *.[ch] - added $Id: ChangeLog,v 1.431 2006/06/23 01:31:04 masneyb Exp $ tags
 
 	* debian/* - updated files from Debian maintainer
 
