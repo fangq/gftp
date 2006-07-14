@@ -1,4 +1,10 @@
 2006-7-13 Brian Masney <masneyb@gftp.org>
+	* src/gtk/bookmarks.c src/gtk/delete_dialog.c src/gtk/dnd.c
+	src/gtk/gftp-gtk.c src/gtk/gftp-gtk.h src/gtk/gtkui.c
+	src/gtk/menu-items.c src/gtk/misc-gtk.c src/gtk/options_dialog.c
+	src/gtk/transfer.c src/gtk/view_dialog.c - fixed a few minor warnings
+        from splint.
+
 	* src/text/textui.c src/uicommon/gftpui.c - fixed a few minor warnings
 	from splint.
 
@@ -3409,7 +3415,7 @@
 
 	* cvsclean - added this script
 
-	* *.[ch] - added $Id: ChangeLog,v 1.439 2006/07/14 00:37:26 masneyb Exp $ tags
+	* *.[ch] - added $Id: ChangeLog,v 1.440 2006/07/14 01:53:41 masneyb Exp $ tags
 
 	* debian/* - updated files from Debian maintainer
 
