@@ -1,4 +1,9 @@
 2006-7-19 Brian Masney <masneyb@gftp.org>
+	* src/gtk/gtkui.c src/text/textui.c src/uicommon/gftpui.c
+	src/uicommon/gftpui.h - change the cursor to a busy cursor when 
+	the protocol functions are used (from Scott Reeves <sreeves@novell.com>)
+	(closes #305927)
+
 	* src/uicommon/gftpui.c - make sure the directories have the proper
 	permissions when "preserve file permissions" is enabled
 	(from Aurelien Jarno <aurelien@aurel32.net>) (closes #312722)
@@ -3436,7 +3441,7 @@
 
 	* cvsclean - added this script
 
-	* *.[ch] - added $Id: ChangeLog,v 1.446 2006/07/20 02:20:48 masneyb Exp $ tags
+	* *.[ch] - added $Id: ChangeLog,v 1.447 2006/07/20 02:24:48 masneyb Exp $ tags
 
 	* debian/* - updated files from Debian maintainer
 
