@@ -1,3 +1,7 @@
+2006-7-19 Brian Masney <masneyb@gftp.org>
+	* lib/sslcommon.c - added support for wildcard SSL certificates (from
+	Kai Blaschke <webmaster@thw-theorie.de>) (closes #339663)
+
 2006-7-13 Brian Masney <masneyb@gftp.org>
 	* src/gtk/bookmarks.c src/gtk/delete_dialog.c src/gtk/dnd.c
 	src/gtk/gftp-gtk.c src/gtk/gftp-gtk.h src/gtk/gtkui.c
@@ -3415,7 +3419,7 @@
 
 	* cvsclean - added this script
 
-	* *.[ch] - added $Id: ChangeLog,v 1.440 2006/07/14 01:53:41 masneyb Exp $ tags
+	* *.[ch] - added $Id: ChangeLog,v 1.441 2006/07/20 01:20:58 masneyb Exp $ tags
 
 	* debian/* - updated files from Debian maintainer
 
