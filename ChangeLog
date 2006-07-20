@@ -1,4 +1,7 @@
 2006-7-19 Brian Masney <masneyb@gftp.org>
+	* src/gtk/transfer.c (remove_file) - fixes for when the viewed file can
+	be removed if an invalid program is specified (closes #330182)
+
 	* lib/sslcommon.c - added support for wildcard SSL certificates (from
 	Kai Blaschke <webmaster@thw-theorie.de>) (closes #339663)
 
@@ -3419,7 +3422,7 @@
 
 	* cvsclean - added this script
 
-	* *.[ch] - added $Id: ChangeLog,v 1.441 2006/07/20 01:20:58 masneyb Exp $ tags
+	* *.[ch] - added $Id: ChangeLog,v 1.442 2006/07/20 01:28:48 masneyb Exp $ tags
 
 	* debian/* - updated files from Debian maintainer
 
