@@ -1,4 +1,7 @@
 2006-7-19 Brian Masney <masneyb@gftp.org>
+	* src/gtk/bookmarks.c - fixed segfault in the bookmarks editor (from
+	Grant Hammond <grant@f1fox.net>) (closes #329261 and #169617)
+
 	* src/gtk/gftp-gtk.c - added patch that makes the menus closer to other
 	GNOME apps (from Alan Horkan <horkana@maths.tcd.ie>) (closes #329826)
 
@@ -3425,7 +3428,7 @@
 
 	* cvsclean - added this script
 
-	* *.[ch] - added $Id: ChangeLog,v 1.443 2006/07/20 01:46:42 masneyb Exp $ tags
+	* *.[ch] - added $Id: ChangeLog,v 1.444 2006/07/20 01:54:39 masneyb Exp $ tags
 
 	* debian/* - updated files from Debian maintainer
 
