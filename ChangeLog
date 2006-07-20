@@ -1,4 +1,7 @@
 2006-7-19 Brian Masney <masneyb@gftp.org>
+	* src/gtk/gftp-gtk.c - added patch that makes the menus closer to other
+	GNOME apps (from Alan Horkan <horkana@maths.tcd.ie>) (closes #329826)
+
 	* src/gtk/transfer.c (remove_file) - fixes for when the viewed file can
 	be removed if an invalid program is specified (closes #330182)
 
@@ -3422,7 +3425,7 @@
 
 	* cvsclean - added this script
 
-	* *.[ch] - added $Id: ChangeLog,v 1.442 2006/07/20 01:28:48 masneyb Exp $ tags
+	* *.[ch] - added $Id: ChangeLog,v 1.443 2006/07/20 01:46:42 masneyb Exp $ tags
 
 	* debian/* - updated files from Debian maintainer
 
