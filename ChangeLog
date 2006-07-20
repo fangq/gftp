@@ -1,3 +1,7 @@
+2006-7-20 Brian Masney <masneyb@gftp.org>
+	* configure.in - added configure check for fsplib. Also, removed 
+	intl/Makefile and po/Makefile.in from AC_OUTPUT()
+
 2006-7-19 Brian Masney <masneyb@gftp.org>
 	* configure.in - updated version number to 2.0.19pre1. I have a long
 	ways to go though before I can put out a new release of gftp. I want
@@ -3465,7 +3469,7 @@
 
 	* cvsclean - added this script
 
-	* *.[ch] - added $Id: ChangeLog,v 1.452 2006/07/20 03:18:51 masneyb Exp $ tags
+	* *.[ch] - added $Id: ChangeLog,v 1.453 2006/07/20 10:22:16 masneyb Exp $ tags
 
 	* debian/* - updated files from Debian maintainer
 
