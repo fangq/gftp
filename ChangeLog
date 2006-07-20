@@ -1,4 +1,8 @@
 2006-7-19 Brian Masney <masneyb@gftp.org>
+	* src/gtk/gftp-gtk.c - fixed the default protocol dropdown when some
+	protocols are disabled (from Aurelien Jarno <aurelien@aurel32.net>)
+	(closes #312724)
+
 	* src/gtk/bookmarks.c - fixed segfault in the bookmarks editor (from
 	Grant Hammond <grant@f1fox.net>) (closes #329261 and #169617)
 
@@ -3428,7 +3432,7 @@
 
 	* cvsclean - added this script
 
-	* *.[ch] - added $Id: ChangeLog,v 1.444 2006/07/20 01:54:39 masneyb Exp $ tags
+	* *.[ch] - added $Id: ChangeLog,v 1.445 2006/07/20 02:16:29 masneyb Exp $ tags
 
 	* debian/* - updated files from Debian maintainer
 
