@@ -1,4 +1,11 @@
 2006-7-19 Brian Masney <masneyb@gftp.org>
+	* configure.in - updated version number to 2.0.19pre1. I have a long
+	ways to go though before I can put out a new release of gftp. I want
+	to close a lot of the bugs in Bugzilla
+
+	* docs/sample.gftp/disconnect.xpm docs/sample.gftp/gftp-mini-logo.png -
+	added more pixmaps to CVS
+
 	* lib/misc.c (gftp_copy_request) - updated patch that makes sure the
 	request->hostp structure is copied properly (from (from Aurelien Jarno
         <aurelien@aurel32.net>) (closes #314626)
@@ -3458,7 +3465,7 @@
 
 	* cvsclean - added this script
 
-	* *.[ch] - added $Id: ChangeLog,v 1.451 2006/07/20 02:57:01 masneyb Exp $ tags
+	* *.[ch] - added $Id: ChangeLog,v 1.452 2006/07/20 03:18:51 masneyb Exp $ tags
 
 	* debian/* - updated files from Debian maintainer
 
