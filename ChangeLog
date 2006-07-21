@@ -1,4 +1,8 @@
 2006-7-21 Brian Masney <masneyb@gftp.org>
+	* src/gtk/transfer.c (transfer_done) - fixed race condition that
+	would occur when selecting Stop Transfer and then Start Transfer
+	(from Matthieu Crapet <mcrapet@gmail.com>) (closes #348140)
+
 	* src/gtk/gftp-gtk.c - renamed OpenURL dialog to Open Location
 
 	* src/gtk/misc-gtk.c (update_window_info) - fixed the default protocol
@@ -3480,7 +3484,7 @@
 
 	* cvsclean - added this script
 
-	* *.[ch] - added $Id: ChangeLog,v 1.455 2006/07/21 13:23:45 masneyb Exp $ tags
+	* *.[ch] - added $Id: ChangeLog,v 1.456 2006/07/21 13:30:11 masneyb Exp $ tags
 
 	* debian/* - updated files from Debian maintainer
 
