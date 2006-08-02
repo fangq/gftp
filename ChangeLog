@@ -1,3 +1,9 @@
+2006-8-2 Brian Masney <masneyb@gftp.org>
+	* src/uicommon/gftpui.c (gftpui_common_add_file_transfer) - don't
+	prompt the user about what to do with the file(s) that already exist if
+	the overwrite_default option is enabled. This option is disabled by
+	default. (closes #336232)
+
 2006-7-29 Brian Masney <masneyb@gftp.org>
 	* src/gtk/gftp-gtk.c src/gtk/transfer.c - removed some unnecessary
 	updates to the toolbar
@@ -3522,7 +3528,7 @@
 
 	* cvsclean - added this script
 
-	* *.[ch] - added $Id: ChangeLog,v 1.462 2006/07/29 14:56:36 masneyb Exp $ tags
+	* *.[ch] - added $Id: ChangeLog,v 1.463 2006/08/02 22:50:21 masneyb Exp $ tags
 
 	* debian/* - updated files from Debian maintainer
 
