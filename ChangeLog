@@ -1,3 +1,8 @@
+2006-8-8 Brian Masney <masneyb@gftp.org>
+	* lib/protocols.c (gftp_parse_ls_unix) - fixes whenever a smaller than
+	expected attribute field is returned (gftp_get_line) - make sure the
+	end of the buffer is nul terminated properly
+
 2006-8-2 Brian Masney <masneyb@gftp.org>
 	* src/gtk/misc-gtk.c (MakeYesNoDialog, MakeEditDialog) - use
 	gtk_grab_add() to make sure these dialogs have exclusive focus in
@@ -3532,7 +3537,7 @@
 
 	* cvsclean - added this script
 
-	* *.[ch] - added $Id: ChangeLog,v 1.464 2006/08/02 23:14:36 masneyb Exp $ tags
+	* *.[ch] - added $Id: ChangeLog,v 1.465 2006/08/09 00:31:05 masneyb Exp $ tags
 
 	* debian/* - updated files from Debian maintainer
 
