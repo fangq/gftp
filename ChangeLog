@@ -1,3 +1,7 @@
+2006-09-07  Pema Geyleg  <pgeyleg@gmail.com>
+
+	* configure.in: Added dz to ALL_LINGUAS
+
 2006-08-27  Abel Cheung  <abel@oaka.org>
 
 	* configure.in: Added 'zh_HK' to ALL_LINGUAS.
@@ -3546,7 +3550,7 @@
 
 	* cvsclean - added this script
 
-	* *.[ch] - added $Id: ChangeLog,v 1.467 2006/08/27 03:45:15 baddog Exp $ tags
+	* *.[ch] - added $Id: ChangeLog,v 1.468 2006/09/07 11:14:38 pgeyleg Exp $ tags
 
 	* debian/* - updated files from Debian maintainer
 
