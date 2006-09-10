@@ -1,4 +1,7 @@
 2006-8-10 Brian Masney <masneyb@gftp.org>
+	* src/gtk/gtkui.c (gftpui_refresh) - delete the cache entry before
+	checking to see if it needs to reconnect to the remote server
+
 	* src/uicommon/gftpui.c (gftpui_common_cmd_site) - make sure the
 	toggled state is enabled so that the command is prepended with the 
 	SITE command
@@ -3555,7 +3558,7 @@
 
 	* cvsclean - added this script
 
-	* *.[ch] - added $Id: ChangeLog,v 1.469 2006/09/10 16:06:01 masneyb Exp $ tags
+	* *.[ch] - added $Id: ChangeLog,v 1.470 2006/09/10 16:10:40 masneyb Exp $ tags
 
 	* debian/* - updated files from Debian maintainer
 
