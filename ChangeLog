@@ -1,4 +1,10 @@
 2006-8-10 Brian Masney <masneyb@gftp.org>
+	* lib/options.h src/gtk/gftp-gtk.c (_gftp_exit) - added new option:
+	remember_last_directory. This will control whether or not the last
+	directory is remembered when the application is closed. I had a lot
+	of people ask for this option. I personally find it annoying, which
+	is why I left the option disabled by default.
+
 	* src/gtk/gtkui.c (gftpui_refresh) - delete the cache entry before
 	checking to see if it needs to reconnect to the remote server
 
@@ -3558,7 +3564,7 @@
 
 	* cvsclean - added this script
 
-	* *.[ch] - added $Id: ChangeLog,v 1.470 2006/09/10 16:10:40 masneyb Exp $ tags
+	* *.[ch] - added $Id: ChangeLog,v 1.471 2006/09/10 16:18:15 masneyb Exp $ tags
 
 	* debian/* - updated files from Debian maintainer
 
