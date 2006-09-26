@@ -1,3 +1,6 @@
+2006-9-26 Brian Masney <masneyb@gftp.org>
+	* lib/rfc959.c - added rfc959_close_data_connection()
+
 2006-9-15 Brian Masney <masneyb@gftp.org>
 	* lib/protocols.c (gftp_fd_write, gftp_fd_read,
 	gftp_fd_set_sockblocking) - added checks to make sure the file
@@ -3581,7 +3584,7 @@
 
 	* cvsclean - added this script
 
-	* *.[ch] - added $Id: ChangeLog,v 1.473 2006/09/15 11:26:01 masneyb Exp $ tags
+	* *.[ch] - added $Id: ChangeLog,v 1.474 2006/09/26 10:56:33 masneyb Exp $ tags
 
 	* debian/* - updated files from Debian maintainer
 
