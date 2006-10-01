@@ -1,4 +1,11 @@
 2006-10-1 Brian Masney <masneyb@gftp.org>
+	* lib/ftpcommon.h lib/ftps.c lib/rfc959.c - automatically reconnect to
+	the server if a timeout occurs.
+
+	* src/uicommon/gftpui.c (_gftpui_common_thread_callback) - removed
+	checks for the timeouts. This is now transparently handled in the
+	FTP[S]* protocols. I need to check for timeouts in the other protocols.
+
 	* src/gtk/transfer.c src/uicommon/gftpui.c src/uicommon/gftpui.h - added
 	new functions for canceling and skipping file transfers
 
@@ -3597,7 +3604,7 @@
 
 	* cvsclean - added this script
 
-	* *.[ch] - added $Id: ChangeLog,v 1.477 2006/10/01 17:57:45 masneyb Exp $ tags
+	* *.[ch] - added $Id: ChangeLog,v 1.478 2006/10/01 18:25:00 masneyb Exp $ tags
 
 	* debian/* - updated files from Debian maintainer
 
