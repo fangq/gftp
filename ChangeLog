@@ -1,4 +1,9 @@
 2006-10-15 Brian Masney <masneyb@gftp.org>
+	* lib/fsplib/lock.c (client_init_key) - renamed the sun local variable
+	to su. This was causing compile problems under Solaris.
+
+	* lib/fsplib/lock.h - include ../../config.h
+
 	* src/gtk/delete_dialog.c (askdel) - fixes displaying the proper number
 	of directories that will be deleted to the user when there are no files
 	to delete
@@ -3622,7 +3627,7 @@
 
 	* cvsclean - added this script
 
-	* *.[ch] - added $Id: ChangeLog,v 1.482 2006/10/15 17:02:14 masneyb Exp $ tags
+	* *.[ch] - added $Id: ChangeLog,v 1.483 2006/10/15 17:36:28 masneyb Exp $ tags
 
 	* debian/* - updated files from Debian maintainer
 
