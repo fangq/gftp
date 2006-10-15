@@ -1,4 +1,7 @@
 2006-10-15 Brian Masney <masneyb@gftp.org>
+	* lib/protocols.c (gftp_get_all_subdirs) - use S_ISDIR macro instead of
+	checking the bitmask against S_IFDIR. 
+
 	* src/uicommon/gftpui.c - split the code that transfers files into
 	smaller functions.
 
@@ -3613,7 +3616,7 @@
 
 	* cvsclean - added this script
 
-	* *.[ch] - added $Id: ChangeLog,v 1.480 2006/10/15 16:16:52 masneyb Exp $ tags
+	* *.[ch] - added $Id: ChangeLog,v 1.481 2006/10/15 16:25:00 masneyb Exp $ tags
 
 	* debian/* - updated files from Debian maintainer
 
