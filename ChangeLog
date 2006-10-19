@@ -2,6 +2,8 @@
 	WARNING: The CVS version of gFTP is currently broken, especially for
 	international users. This will be fixed in a few days.
 
+	* lib/local.c - convert the file or directory to the proper locale
+
 	* src/gtk/gtkui.c src/gtk/gtkui_transfer.c src/gtk/misc-gtk.c lib/gftp.h
 	lib/misc.c lib/protocols.c - removed code that converts the filename to
 	UTF8. This will be handled by the library. Removed utf8_file member from
@@ -3649,7 +3651,7 @@
 
 	* cvsclean - added this script
 
-	* *.[ch] - added $Id: ChangeLog,v 1.485 2006/10/19 11:41:02 masneyb Exp $ tags
+	* *.[ch] - added $Id: ChangeLog,v 1.486 2006/10/19 12:32:10 masneyb Exp $ tags
 
 	* debian/* - updated files from Debian maintainer
 
