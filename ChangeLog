@@ -2,6 +2,9 @@
 	WARNING: The CVS version of gFTP is currently broken, especially for
 	international users. This will be fixed in a few days.
 
+	* lib/sshv2.c - added i18n support so that the files are encoded
+	properly
+
 	* lib/sshv2.c (sshv2_add_string_to_buf) - added length argument to
 	this function.
 
@@ -3666,7 +3669,7 @@
 
 	* cvsclean - added this script
 
-	* *.[ch] - added $Id: ChangeLog,v 1.489 2006/11/01 02:31:05 masneyb Exp $ tags
+	* *.[ch] - added $Id: ChangeLog,v 1.490 2006/11/01 03:15:48 masneyb Exp $ tags
 
 	* debian/* - updated files from Debian maintainer
 
