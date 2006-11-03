@@ -1,4 +1,8 @@
 2006-11-2 Brian Masney <masneyb@gftp.org>
+	* src/text/gftp-text.c src/text/gftp-text.h src/text/textui.c -
+	use gftp_string_from_utf8() for the conversion between the
+	various character sets.
+
 	* lib/gftp.h lib/local.c lib/misc.c lib/protocols.c lib/rfc959.c
 	lib/sshv2.c - added gftp_filename_to_utf8() and
 	gftp_filename_from_utf8().
@@ -3689,7 +3693,7 @@
 
 	* cvsclean - added this script
 
-	* *.[ch] - added $Id: ChangeLog,v 1.495 2006/11/03 03:02:47 masneyb Exp $ tags
+	* *.[ch] - added $Id: ChangeLog,v 1.496 2006/11/03 03:07:40 masneyb Exp $ tags
 
 	* debian/* - updated files from Debian maintainer
 
