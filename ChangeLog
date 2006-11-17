@@ -1,4 +1,9 @@
 2006-11-16 Brian Masney <masneyb@gftp.org>
+	* docs/gftp-faq.sgml - added FAQ entry on how to transfer HTML files in
+	binary mode using the FTP protocol.
+
+	* docs/website/screenshots.html - updated this webpage
+
 	* lib/gftp.h lib/protocols.c lib/local.c - added support for detecting
 	recursive symbolic links. This currently only works when uploading
 	files. It will only work when downloading files if the inode and device
@@ -3724,7 +3729,7 @@
 
 	* cvsclean - added this script
 
-	* *.[ch] - added $Id: ChangeLog,v 1.501 2006/11/17 02:24:03 masneyb Exp $ tags
+	* *.[ch] - added $Id: ChangeLog,v 1.502 2006/11/17 02:45:03 masneyb Exp $ tags
 
 	* debian/* - updated files from Debian maintainer
 
