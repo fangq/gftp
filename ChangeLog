@@ -1,4 +1,7 @@
 2006-11-30 Brian Masney <masneyb@gftp.org>
+	* src/gtk/bookmarks.c (do_make_new) - don't allow creating
+	bookmarks that have an empty description. (closes #367933)
+
 	* src/gtk/bookmarks.c - changed the button order to match the
 	button order in GNOME. (from Alan Horkan <horkana@maths.tcd.ie>)
 
@@ -3779,7 +3782,7 @@
 
 	* cvsclean - added this script
 
-	* *.[ch] - added $Id: ChangeLog,v 1.510 2006/12/23 19:54:08 masneyb Exp $ tags
+	* *.[ch] - added $Id: ChangeLog,v 1.511 2006/12/23 20:10:06 masneyb Exp $ tags
 
 	* debian/* - updated files from Debian maintainer
 
