@@ -46,13 +46,19 @@ do_view_or_edit_file (gftp_window_data * fromwdata, int is_view)
     {
       if (is_view)
       {
-        /*ftp_log (gftp_logging_error, NULL,
-                 _("View: %s is a directory. Cannot view it.\n"), curfle->file);*/
-        char cmd[2048]={'\0'};
-        sprintf(cmd,"$(which nautilus || which thunar|| which dolphin || which konqueror || which pcmanfm) '%s'",curfle->file);
-        ftp_log (gftp_logging_error, NULL,
-                 _("View directory: launch external command\n\t%s\n"), cmd);
-        if(cmd) system(cmd);
+        if (strcmp (gftp_protocols[fromwdata->request->protonum].name, "Local") == 0)
+        {
+          char cmd[2048]={'\0'};
+          sprintf(cmd,"$(which nautilus || which thunar|| which dolphin || which konqueror || which pcmanfm) '%s'",curfle->file);
+          ftp_log (gftp_logging_error, NULL,
+                 _("View directory: run external command\n\t%s\n"), cmd);
+          if(cmd[0]) system(cmd);
+        }
+        else
+        {
+          ftp_log (gftp_logging_error, NULL,
+                 _("View: %s is a remote directory. Cannot view it.\n"), curfle->file);
+        }
       }
       else
         ftp_log (gftp_logging_error, NULL,
