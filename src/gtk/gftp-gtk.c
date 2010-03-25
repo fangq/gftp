@@ -709,6 +709,20 @@ list_doaction (gftp_window_data * wdata)
 }
 
 
+static void
+list_reselect (GtkCList *lbox, gint row, gint col)
+{
+  gtk_clist_freeze(lbox);
+  gtk_clist_unselect_all (lbox);
+  gtk_clist_select_row(lbox,row,col);
+  lbox->focus_row=row;
+  if (gtk_clist_row_is_visible(lbox,row) == GTK_VISIBILITY_NONE)
+       gtk_clist_moveto(lbox,row, -1, 0.5, 0);
+
+  gtk_clist_thaw(lbox);
+}
+
+
 static gint
 list_enter (GtkWidget * widget, GdkEventKey * event, gpointer data)
 {
@@ -764,15 +778,7 @@ list_enter (GtkWidget * widget, GdkEventKey * event, gpointer data)
           gtk_clist_get_text (lbox,idx,1,&text);
 	  if(strstr(text,typeaheadbuf)==text)/*match string beginning*/
 	  {
-              gtk_clist_freeze(lbox);
-
-              gtk_clist_unselect_all (lbox);
-	      gtk_clist_select_row(lbox,idx,1);
-	      lbox->focus_row=idx;
-	      if (gtk_clist_row_is_visible(lbox,idx) == GTK_VISIBILITY_NONE)
-	         gtk_clist_moveto(lbox,idx, -1, 0.5, 0);
-
-              gtk_clist_thaw(lbox);
+              list_reselect(lbox,idx,1);
 	      /*g_print("row=%d %d %s %s\n",idx,i,text,gdk_keyval_name(event->keyval));*/
 	      break;
 	  }
@@ -787,12 +793,18 @@ static gint
 list_dblclick (GtkWidget * widget, GdkEventButton * event, gpointer data)
 {
   gftp_window_data * wdata;
-
+  int row, col;
   wdata = data;
+  GtkCList * lbox=GTK_CLIST (widget);
 
   if (event->button == 3)
+  {
+    if(gtk_clist_get_selection_info(widget,(guint) event->x,(guint) event->y,&row,&col))
+        list_reselect(lbox,row,col);
+
     gtk_item_factory_popup (wdata->ifactory, (guint) event->x_root,
                             (guint) event->y_root, 3, event->time);
+  }
   return (FALSE);
 }
 
