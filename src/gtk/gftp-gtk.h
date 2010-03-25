@@ -33,6 +33,9 @@
 #define GFTP_MENU_ITEM_WIN1	3
 #define GFTP_MENU_ITEM_WIN2	4
 
+#define GFTP_TYPEAHEAD_BUF_LEN	32
+#define GFTP_TYPEAHEAD_MAX_WAIT	500   /*wait for 0.5 second*/
+
 #define IS_ONE_SELECTED(wdata)		(GTK_CLIST ((wdata)->listbox)->selection && GTK_CLIST ((wdata)->listbox)->selection->next == NULL)
 #define IS_NONE_SELECTED(wdata)		(GTK_CLIST ((wdata)->listbox)->selection == NULL)
 #define gftp_gtk_get_list_selection(wdata)  (GTK_CLIST ((wdata)->listbox)->selection)
