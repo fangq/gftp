@@ -45,8 +45,15 @@ do_view_or_edit_file (gftp_window_data * fromwdata, int is_view)
   if (S_ISDIR (curfle->st_mode))
     {
       if (is_view)
+      {
+        /*ftp_log (gftp_logging_error, NULL,
+                 _("View: %s is a directory. Cannot view it.\n"), curfle->file);*/
+        char cmd[2048]={'\0'};
+        sprintf(cmd,"$(which nautilus || which thunar|| which dolphin || which konqueror || which pcmanfm) '%s'",curfle->file);
         ftp_log (gftp_logging_error, NULL,
-                 _("View: %s is a directory. Cannot view it.\n"), curfle->file);
+                 _("View directory: launch external command\n\t%s\n"), cmd);
+        if(cmd) system(cmd);
+      }
       else
         ftp_log (gftp_logging_error, NULL,
                  _("Edit: %s is a directory. Cannot edit it.\n"), curfle->file);
