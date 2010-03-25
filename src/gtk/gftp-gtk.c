@@ -736,11 +736,11 @@ list_enter (GtkWidget * widget, GdkEventKey * event, gpointer data)
       static gint  typeaheadtime=0;
       static gchar typeaheadbuf[GFTP_TYPEAHEAD_BUF_LEN]={'\0'};
       gchar *text;
-      GtkWidget * lbox=GTK_CLIST ((wdata)->listbox);
-      gint  startpos=0, rowcount=GTK_CLIST(lbox)->rows;
+      GtkCList * lbox=GTK_CLIST ((wdata)->listbox);
+      gint  startpos=0, rowcount=lbox->rows;
 
-      if(GTK_CLIST(lbox)->selection)       /*search starts from the selected item*/
-              startpos=GPOINTER_TO_INT(GTK_CLIST(lbox)->selection->data)+1;
+      if(lbox->selection)       /*search starts from the selected item*/
+              startpos=GPOINTER_TO_INT(lbox->selection->data)+1;
 
       if (strlen(gdk_keyval_name(event->keyval))==1)           /*only simple keys*/
       {
@@ -753,23 +753,26 @@ list_enter (GtkWidget * widget, GdkEventKey * event, gpointer data)
 	{
 		if(strlen(typeaheadbuf)+strlen(gdk_keyval_name(event->keyval))<GFTP_TYPEAHEAD_BUF_LEN)
 		    strcpy(typeaheadbuf+strlen(typeaheadbuf),gdk_keyval_name(event->keyval));
-                if(GTK_CLIST(lbox)->selection)       /*search starts from the selected item*/
-                    startpos=GPOINTER_TO_INT(GTK_CLIST(lbox)->selection->data);
+                if(lbox->selection)       /*search starts from the selected item*/
+                    startpos=GPOINTER_TO_INT(lbox->selection->data);
 	}
 	typeaheadtime=event->time;
 	
         for(i=0;i<rowcount;i++)
 	{
 	  int idx=(i+startpos)%rowcount; /*wrap around and search the entire list*/
-          gtk_clist_get_text (GTK_CLIST(lbox),idx,1,&text);
+          gtk_clist_get_text (lbox,idx,1,&text);
 	  if(strstr(text,typeaheadbuf)==text)/*match string beginning*/
 	  {
-              gtk_clist_unselect_all (GTK_CLIST(lbox));
-	      gtk_clist_select_row(GTK_CLIST(lbox),idx,1);
-	      GTK_CLIST(lbox)->focus_row=idx;
-	      if (gtk_clist_row_is_visible(GTK_CLIST(lbox),idx) == GTK_VISIBILITY_NONE)
-	         gtk_clist_moveto(GTK_CLIST(lbox),idx, -1, 0.5, 0);
+              gtk_clist_freeze(lbox);
 
+              gtk_clist_unselect_all (lbox);
+	      gtk_clist_select_row(lbox,idx,1);
+	      lbox->focus_row=idx;
+	      if (gtk_clist_row_is_visible(lbox,idx) == GTK_VISIBILITY_NONE)
+	         gtk_clist_moveto(lbox,idx, -1, 0.5, 0);
+
+              gtk_clist_thaw(lbox);
 	      /*g_print("row=%d %d %s %s\n",idx,i,text,gdk_keyval_name(event->keyval));*/
 	      break;
 	  }
