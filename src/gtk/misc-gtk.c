@@ -749,6 +749,17 @@ add_file_listbox (gftp_window_data * wdata, gftp_file * fle)
 
   if (fle->file != NULL && fle->filename_utf8_encoded)
     gtk_clist_set_text (GTK_CLIST (wdata->listbox), clist_num, 1, fle->file);
+#if GTK_MAJOR_VERSION > 1
+  else if(fle->file != NULL && !fle->filename_utf8_encoded) /* simulate G_BROKEN_FILENAMES */
+   {
+       char *utf8name;
+       size_t dest_len;
+       utf8name=gftp_filename_to_utf8_guess(wdata->request,fle->file, &dest_len);
+       if(utf8name[0]) 
+           gtk_clist_set_text (GTK_CLIST (wdata->listbox), clist_num, 1, utf8name);
+       g_free(utf8name);
+   }
+#endif
 
   if (GFTP_IS_SPECIAL_DEVICE (fle->st_mode))
     tempstr = g_strdup_printf ("%d, %d", major (fle->size),

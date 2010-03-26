@@ -80,13 +80,14 @@ _do_convert_string (gftp_request * request, int is_filename, int force_local,
                     const char *str, size_t *dest_len, int from_utf8)
 {
   char *remote_charsets, *ret, *fromset, *toset, *stpos, *cur_charset;
+  unsigned char *badcode;
   GError * error;
   gsize bread;
 
   if (request == NULL)
     return (NULL);
 
-  if (g_utf8_validate (str, -1, NULL) != from_utf8)
+  if (g_utf8_validate (str, -1, &badcode) != from_utf8)
     return (NULL);
 
   error = NULL;
@@ -107,6 +108,21 @@ _do_convert_string (gftp_request * request, int is_filename, int force_local,
             ret = g_filename_to_utf8 (str, -1, &bread, dest_len, &error);
           else
             ret = g_locale_to_utf8 (str, -1, &bread, dest_len, &error);
+        }
+
+      /* let's beat the dead horse by some simple encoding detection schemes */
+      /* enabled by setting force_local=2 */
+      if(force_local ==2 && ret == NULL) 
+        {
+          GIConv chardetector;
+          /* try GBK (cp936), this is the default Chinese locale for Windows */
+          if(badcode[0]>=0x81 && badcode[0]<=0xFE && badcode[1]>=0x40 && badcode[1]<=0xFE) /*possibily GBK*/
+            {
+                 /* the above condition can not tell GBK from Big5, need to refine */
+                 chardetector  =g_iconv_open("UTF-8","GBK");
+                 ret = g_convert_with_iconv (str, -1, chardetector, &bread, dest_len,&error);
+            }
+          g_iconv_close(chardetector);
         }
 
       if (ret == NULL)
@@ -217,6 +233,14 @@ gftp_filename_to_utf8 (gftp_request * request, const char *str,
                        size_t *dest_len)
 {
   return (_do_convert_string (request, 1, 0, str, dest_len, 0));
+}
+
+
+char *
+gftp_filename_to_utf8_guess (gftp_request * request, const char *str,
+                       size_t *dest_len)
+{
+  return (_do_convert_string (request, 1, 2, str, dest_len, 0));
 }
 
 
