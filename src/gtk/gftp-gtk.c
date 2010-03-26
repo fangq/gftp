@@ -258,7 +258,6 @@ static void
 navi_up_directory(gftp_window_data * wdata)
 {
   char *directory;
-  int success, menuitem;
   if(gtk_widget_is_focus(GTK_CLIST ((window1).listbox)))
   {
       wdata=&window1;
