@@ -258,7 +258,7 @@ static void
 navi_up_directory(gftp_window_data * wdata)
 {
   char *directory;
-  if(gtk_widget_is_focus(GTK_CLIST ((window1).listbox)))
+  if(gtk_widget_is_focus((GtkWidget*)GTK_CLIST ((window1).listbox)))
   {
       wdata=&window1;
   }
@@ -732,6 +732,19 @@ list_doaction (gftp_window_data * wdata)
 }
 
 
+static int
+is_row_selected(GList *selected,int row)
+{
+  while (selected)
+  {
+    if(GPOINTER_TO_INT (selected->data)==row)
+       return 1;
+    selected=selected->next;
+  }
+  return 0;
+}
+
+
 static void
 list_reselect (GtkCList *lbox, gint row, gint col)
 {
@@ -822,9 +835,11 @@ list_dblclick (GtkWidget * widget, GdkEventButton * event, gpointer data)
 
   if (event->button == 3)
   {
-    if(gtk_clist_get_selection_info(widget,(guint) event->x,(guint) event->y,&row,&col))
-        list_reselect(lbox,row,col);
-
+    if(gtk_clist_get_selection_info(lbox,(guint) event->x,(guint) event->y,&row,&col))
+    {
+        if(!is_row_selected(gftp_gtk_get_list_selection(wdata),row))
+            list_reselect(lbox,row,col);
+    }
     gtk_item_factory_popup (wdata->ifactory, (guint) event->x_root,
                             (guint) event->y_root, 3, event->time);
   }
