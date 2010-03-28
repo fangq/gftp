@@ -258,7 +258,7 @@ static void
 navi_up_directory(gftp_window_data * wdata)
 {
   char *directory;
-  if(gtk_widget_is_focus((GtkWidget*)GTK_CLIST ((window1).listbox)))
+  if(gtk_widget_is_focus(window1.listbox))
   {
       wdata=&window1;
   }
