@@ -602,6 +602,16 @@ gftp_parse_bookmark (gftp_request * request, gftp_request * local_request,
 }
 
 
+int is_directory(char *path) {
+   struct stat statbuf;
+
+   if (stat(path, &statbuf) == -1)
+      return 0;
+   else
+      return S_ISDIR(statbuf.st_mode);
+}
+
+
 int
 gftp_parse_url (gftp_request * request, const char *url)
 {
@@ -686,8 +696,17 @@ gftp_parse_url (gftp_request * request, const char *url)
 
   if ((endpos = strchr (pos, '/')) != NULL)
     {
-      gftp_set_directory (request, endpos);
-      *endpos = '\0';
+      if(is_directory(endpos))
+        {
+           gftp_set_directory (request, endpos);
+           *endpos = '\0';
+        }
+      else
+        {
+           if (request->directory)
+             g_free (request->directory);
+           request->directory = g_strdup (endpos);
+        }
     }
 
   if (request->parse_url != NULL)
