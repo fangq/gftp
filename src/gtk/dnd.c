@@ -79,7 +79,8 @@ dnd_remote_file (gftp_window_data * wdata, GList ** trans_list, char *url)
   newfle->file = g_strdup (current_ftpdata->directory);
   *(pos - 1) = '\0';
 
-  gftp_stat_filename(fromwdata->request,newfle->file,&(newfle->st_mode),&(newfle->size));
+  if(fromwdata != NULL)
+    gftp_stat_filename(fromwdata->request,newfle->file,&(newfle->st_mode),&(newfle->size));
 
   newfle->destfile = gftp_build_path (wdata->request,
                                       wdata->request->directory, pos, NULL);
