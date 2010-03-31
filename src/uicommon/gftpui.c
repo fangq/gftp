@@ -93,6 +93,9 @@ gftpui_common_run_callback_function (gftpui_callback_data * cdata)
   if (ret == 0 && !cdata->dont_refresh)
     gftpui_refresh (cdata->uidata, !cdata->dont_clear_cache);
 
+  if(ret == GFTP_ECANIGNORE)
+    return GFTP_ECANIGNORE;
+
   return (ret == 0);
 }
 

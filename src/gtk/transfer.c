@@ -35,8 +35,11 @@ ftp_list_files (gftp_window_data * wdata)
   cdata->run_function = gftpui_common_run_ls;
   cdata->dont_refresh = 1;
 
-  gftpui_common_run_callback_function (cdata);
-
+  if(gftpui_common_run_callback_function (cdata) == GFTP_ECANIGNORE)
+  {
+     g_free(cdata);
+     return (1);
+  }
   wdata->files = cdata->files;
   g_free (cdata);
   

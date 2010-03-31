@@ -921,7 +921,7 @@ sshv2_read_status_response (gftp_request * request, sshv2_message * message,
       sshv2_message_free (message);
 
       if (num == SSH_FX_PERMISSION_DENIED)
-        return (GFTP_EFATAL);
+        return (GFTP_ECANIGNORE);
       else
         return (GFTP_ERETRYABLE);
     }
