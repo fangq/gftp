@@ -51,6 +51,32 @@ yesCB (gftp_transfer * transfer, gftp_dialog_data * ddata)
 }
 
 
+void
+delete_dialog (gpointer data)
+{
+  gftp_window_data * wdata=data;
+  long int num = 0;
+  GList *sel;
+
+  if(wdata==NULL) 
+     return;
+
+  sel = gftp_gtk_get_list_selection (wdata);
+  while (sel != NULL)
+  {
+      sel=sel->next;
+      num++;
+  }
+  if(num>0) 
+  {
+      char * tempstr = g_strdup_printf (_("Are you sure you want to delete the %ld selected item(s)"), num);
+      MakeYesNoDialog (_("Delete Files/Directories"), tempstr,
+                   do_delete_dialog, data, NULL, NULL);
+      g_free (tempstr);  
+  }
+}
+
+
 static void
 askdel (gftp_transfer * transfer)
 {
@@ -78,7 +104,7 @@ askdel (gftp_transfer * transfer)
 
 
 void
-delete_dialog (gpointer data)
+do_delete_dialog (gpointer data)
 {
   gftp_file * tempfle, * newfle;
   GList * templist, * filelist;
@@ -91,6 +117,10 @@ delete_dialog (gpointer data)
       gftpui_common_use_threads (wdata->request), 0, 1, 1))
     return;
 
+/*
+  if(askdel(wdata)!=1)
+    return;
+*/
   transfer = g_malloc0 (sizeof (*transfer));
   transfer->fromreq = gftp_copy_request (wdata->request);
   transfer->fromwdata = wdata;
@@ -130,7 +160,7 @@ delete_dialog (gpointer data)
   if (!ret)
     return;
 
-  askdel (transfer);
+  yesCB (transfer, NULL);
 }
 
 
