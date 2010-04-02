@@ -686,7 +686,7 @@ list_doaction (gftp_window_data * wdata)
   intptr_t list_dblclk_action;
   GList *templist, *filelist;
   gftp_file *tempfle;
-  int num, success;
+  int num, success=0;
   char *directory;
 
   gftp_lookup_request_option (wdata->request, "list_dblclk_action", 
@@ -767,11 +767,37 @@ list_reselect (GtkCList *lbox, gint row, gint col)
 
 
 static gint
+list_keypreview (GtkWidget * widget, GdkEventKey * event, gpointer data)
+{
+  gftp_window_data * wdata=data;
+  GtkCList * lbox=GTK_CLIST ((wdata)->listbox);
+
+  if (event->type == GDK_KEY_PRESS && event->keyval == GDK_Home)
+    {
+      if(lbox==NULL || lbox->rows==0)
+         return (FALSE);
+      list_reselect(lbox,0,1);
+      return (FALSE);
+    }
+  else if (event->type == GDK_KEY_PRESS && event->keyval == GDK_End)
+    {
+      if(lbox==NULL || lbox->rows==0)
+         return (FALSE);
+      list_reselect(lbox,lbox->rows-1,1);
+      return (FALSE);
+    }
+  return (FALSE);
+}
+
+
+static gint
 list_enter (GtkWidget * widget, GdkEventKey * event, gpointer data)
 {
   gftp_window_data * wdata;
+  GtkCList * lbox;
 
   wdata = data;
+  lbox=GTK_CLIST ((wdata)->listbox);
   if (!GFTP_IS_CONNECTED (wdata->request))
     return (TRUE);
 
@@ -793,7 +819,6 @@ list_enter (GtkWidget * widget, GdkEventKey * event, gpointer data)
       static gint  typeaheadtime=0;
       static gchar typeaheadbuf[GFTP_TYPEAHEAD_BUF_LEN]={'\0'};
       gchar *text;
-      GtkCList * lbox=GTK_CLIST ((wdata)->listbox);
       gint  startpos=0, rowcount=lbox->rows;
 
       if(lbox->selection)       /*search starts from the selected item*/
@@ -987,6 +1012,8 @@ CreateFTPWindow (gftp_window_data * wdata)
 		      (gpointer) wdata);
   gtk_signal_connect_after (GTK_OBJECT (wdata->listbox), "key_press_event",
                             GTK_SIGNAL_FUNC (list_enter), (gpointer) wdata);
+  gtk_signal_connect (GTK_OBJECT (wdata->listbox), "key_press_event",
+                            GTK_SIGNAL_FUNC (list_keypreview), (gpointer) wdata);
   gtk_signal_connect (GTK_OBJECT (wdata->listbox), "select_row",
                       GTK_SIGNAL_FUNC(select_row_callback),
                       (gpointer) wdata);
