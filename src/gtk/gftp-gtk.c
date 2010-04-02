@@ -1516,7 +1516,11 @@ main (int argc, char **argv)
 
   gftpui_common_about (ftp_log, NULL);
 
+#if GLIB_CHECK_VERSION(2,14,0)
+  g_timeout_add_seconds (1, update_downloads, NULL);
+#else
   gtk_timeout_add (1000, update_downloads, NULL);
+#endif
 
   _setup_window1 ();
   _setup_window2 (argc, argv);

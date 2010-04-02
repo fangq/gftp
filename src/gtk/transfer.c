@@ -906,8 +906,11 @@ update_downloads (gpointer data)
         }
       templist = templist->next;
     }
-
+#if GLIB_CHECK_VERSION(2,14,0)
+  g_timeout_add_seconds (1, update_downloads, NULL);
+#else
   gtk_timeout_add (500, update_downloads, NULL);
+#endif
   return (0);
 }
 
