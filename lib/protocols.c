@@ -29,6 +29,7 @@ gftp_request_new (void)
   request->datafd = -1;
   request->cachefd = -1;
   request->server_type = GFTP_DIRTYPE_OTHER;
+  request->homedir=NULL;
   return (request);
 }
 
@@ -57,6 +58,8 @@ gftp_request_destroy (gftp_request * request, int free_request)
     g_free (request->last_ftp_response);
   if (request->protocol_data)
     g_free (request->protocol_data);
+  if (request->homedir)
+    g_free (request->homedir);
 
 #if defined (HAVE_GETADDRINFO) && defined (HAVE_GAI_STRERROR)
   if (request->remote_addr != NULL)
@@ -133,7 +136,11 @@ gftp_connect (gftp_request * request)
   if ((ret = gftp_set_config_options (request)) < 0)
     return (ret);
 
-  return (request->connect (request));
+  ret=request->connect (request);
+  if(ret==0 && request->directory && request->directory[0] && request->homedir == NULL)
+      request->homedir=g_strdup(request->directory);
+
+  return ret;
 }
 
 
@@ -169,6 +176,9 @@ gftp_disconnect (gftp_request * request)
     request->iconv_charset = NULL;
   }
 #endif
+  if(request->homedir)
+     g_free (request->homedir);
+  request->homedir=NULL;
 
   request->cached = 0;
   if (request->disconnect == NULL)

@@ -214,8 +214,13 @@ static void
 openurl_dialog (gpointer data)
 {
   gftp_window_data * wdata;
-
-  wdata = data;
+  wdata=&window1;
+  if(gtk_container_get_focus_child(GTK_CONTAINER(window2.container)))
+  {
+      if (!GFTP_IS_CONNECTED (window2.request))
+        return;
+      wdata=&window2;
+  }
   MakeEditDialog (_("Open Location"), _("Enter a URL to connect to"),
                   NULL, 1, NULL, gftp_dialog_button_connect,
                   _gftpui_gtk_do_openurl, wdata,
@@ -284,6 +289,35 @@ navi_up_directory(gftp_window_data * wdata)
                                "..", NULL);
   gftpui_run_chdir (wdata, directory);
   g_free (directory);
+}
+
+
+static void
+gftp_gtk_go_home(gftp_window_data * wdata)
+{
+  wdata=&window1;
+  if(gtk_container_get_focus_child(GTK_CONTAINER(window2.container)))
+  {
+      if (!GFTP_IS_CONNECTED (window2.request))
+        return;
+      wdata=&window2;
+  }
+  if(wdata->request->homedir)
+    gftpui_run_chdir (wdata, wdata->request->homedir);
+}
+
+
+static void
+gftp_gtk_mkdir(gftp_window_data * wdata)
+{
+  wdata=&window1;
+  if(gtk_container_get_focus_child(GTK_CONTAINER(window2.container)))
+  {
+      if (!GFTP_IS_CONNECTED (window2.request))
+        return;
+      wdata=&window2;
+  }
+  gftpui_mkdir_dialog (wdata);
 }
 
 
@@ -915,7 +949,7 @@ gftp_gtk_init_request (gftp_window_data * wdata)
 
 
 GtkWidget *
-gftp_gtk_create_btn(GtkWidget *parent,char *GTK1img, char *GTK2img, int imgtype)
+gftp_gtk_create_btn(GtkWidget *parent,char *GTK1img, char *GTK2img, int imgtype,char *tooltip)
 {
   GtkWidget *btn = gtk_button_new ();
   GtkWidget *tempwid;
@@ -928,6 +962,8 @@ gftp_gtk_create_btn(GtkWidget *parent,char *GTK1img, char *GTK2img, int imgtype)
 
   gtk_box_pack_start (GTK_BOX (parent), btn, FALSE, FALSE, 0);
   gtk_container_add (GTK_CONTAINER (btn), tempwid);
+  if(tooltip && tooltip[0]) 
+     gtk_widget_set_tooltip_text(btn,tooltip);
   return btn;
 }
 
@@ -976,13 +1012,19 @@ CreateFTPWindow (gftp_window_data * wdata)
   gtk_combo_set_case_sensitive (GTK_COMBO (wdata->combo), 1);
   gtk_box_pack_start (GTK_BOX (listtoolbar), wdata->combo, TRUE, TRUE, 0);
 
-  btnUp  =gftp_gtk_create_btn(listtoolbar,"",GTK_STOCK_GO_UP,GTK_ICON_SIZE_SMALL_TOOLBAR);
-  btnHome=gftp_gtk_create_btn(listtoolbar,"",GTK_STOCK_HOME,GTK_ICON_SIZE_SMALL_TOOLBAR);
-  btnRefresh=gftp_gtk_create_btn(listtoolbar,"",GTK_STOCK_REFRESH,GTK_ICON_SIZE_SMALL_TOOLBAR);
-  btnNewFolder=gftp_gtk_create_btn(listtoolbar,"",GTK_STOCK_OPEN,GTK_ICON_SIZE_SMALL_TOOLBAR);
+  btnUp  =gftp_gtk_create_btn(listtoolbar,"",GTK_STOCK_GO_UP,
+                             GTK_ICON_SIZE_SMALL_TOOLBAR, _("Navigate up"));
+  btnHome=gftp_gtk_create_btn(listtoolbar,"",GTK_STOCK_HOME,
+                             GTK_ICON_SIZE_SMALL_TOOLBAR, _("Home"));
+  btnRefresh=gftp_gtk_create_btn(listtoolbar,"",GTK_STOCK_REFRESH,
+                             GTK_ICON_SIZE_SMALL_TOOLBAR,_("Refresh"));
+  btnNewFolder=gftp_gtk_create_btn(listtoolbar,"",GTK_STOCK_OPEN,
+                             GTK_ICON_SIZE_SMALL_TOOLBAR,_("New Folder"));
 
   g_signal_connect (btnUp, "clicked", G_CALLBACK (navi_up_directory), (gpointer) wdata);
   g_signal_connect (btnRefresh, "clicked", G_CALLBACK (gftp_gtk_refresh_focus), (gpointer) wdata);
+  g_signal_connect (btnHome, "clicked", G_CALLBACK (gftp_gtk_go_home), (gpointer) wdata);
+  g_signal_connect (btnNewFolder, "clicked", G_CALLBACK (gftp_gtk_mkdir), (gpointer) wdata);
 
   gtk_signal_connect (GTK_OBJECT (GTK_COMBO (wdata->combo)->entry),
 		      "activate", GTK_SIGNAL_FUNC (chdir_edit),

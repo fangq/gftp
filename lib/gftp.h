@@ -374,6 +374,7 @@ struct gftp_request_tag
        *password,		/* Password for host */
        *account,		/* Account for host (FTP only) */
        *directory,		/* Current working directory */
+       *homedir,                /* The initial directory when connect  */
        *url_prefix,		/* URL Prefix (ex: ftp) */
        *last_ftp_response,	/* Last response from server */
        *last_dir_entry;		/* Last dir entry from server */
