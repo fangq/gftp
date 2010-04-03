@@ -166,10 +166,11 @@ _gftpui_wakeup_main_thread (gpointer data, gint source,
 {
   gftp_request * request;
   char c;
+  ssize_t ret;
 
   request = data;
   if (request->wakeup_main_thread[0] > 0)
-    read (request->wakeup_main_thread[0], &c, 1);
+    ret=read (request->wakeup_main_thread[0], &c, 1);
 }
 
 
@@ -213,12 +214,13 @@ _gftpui_gtk_thread_func (void *data)
 {
   gftpui_gtk_thread_data * thread_data;
   void *ret;
+  ssize_t val;
 
   thread_data = data;
   ret = thread_data->func (thread_data->cdata);
 
   if (thread_data->cdata->request->wakeup_main_thread[1] > 0)
-    write (thread_data->cdata->request->wakeup_main_thread[1], " ", 1);
+    val = write (thread_data->cdata->request->wakeup_main_thread[1], " ", 1);
 
   return (ret);
 }
@@ -423,7 +425,7 @@ gftpui_site_dialog (gpointer data)
 void
 gftpui_update_history_buttons(gftp_window_data * wdata)
 {
-  if(wdata->dirhistory)
+  if(wdata->dirhistory && GTK_IS_WIDGET(wdata->btnPrev) && GTK_IS_WIDGET(wdata->btnNext))
   {
        gtk_widget_set_sensitive (wdata->btnPrev, wdata->dirhistory->prev!=NULL);
        gtk_widget_set_sensitive (wdata->btnNext, wdata->dirhistory->next!=NULL);

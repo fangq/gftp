@@ -22,7 +22,7 @@ static const char cvsid[] = "$Id$";
 
 static GtkItemFactory *log_factory, *dl_factory;
 static GtkWidget * local_frame, * remote_frame, * log_table, * transfer_scroll,
-                 * gftpui_command_toolbar, * protocol_menu;
+                 * gftpui_command_toolbar, * protocol_menu, *btnSync, *btnHidden;
 
 gftp_window_data window1, window2, *other_wdata, *current_wdata;
 GtkWidget * stop_btn, * hostedit, * useredit, * passedit, * portedit, * logwdw,
@@ -281,15 +281,26 @@ gftp_free_dirhistory(gftp_window_data * wdata)
    {
      head=g_list_first(wdata->dirhistory);
      for(node=g_list_last(wdata->dirhistory); node; node=node->prev)
-     {
         g_free((char*)(node->data));
-        head=g_list_delete_link(head,node);
-     }
+     g_list_free(head);
+     wdata->dirhistory=NULL;
    }
    gftpui_update_history_buttons(wdata);
    if(wdata->request && wdata->request->homedir)
       g_free(wdata->request->homedir);
    wdata->request->homedir=NULL;
+}
+
+
+static void
+show_hide_hidden_files(GtkWidget * togbtn)
+{
+  gftp_set_global_option ("show_hidden_files",
+               GINT_TO_POINTER( (GTK_TOGGLE_BUTTON (togbtn)->active)==1 ));
+
+  gftp_gtk_refresh (&window1);
+  if (GFTP_IS_CONNECTED (window2.request))
+      gftp_gtk_refresh (&window2);
 }
 
 
@@ -784,6 +795,23 @@ setup_column (GtkWidget * listbox, int column, int width)
 }
 
 
+int
+gftpui_sync_run_chdir(gftp_window_data * wdata, char *dirname)
+{
+   gftp_window_data *wsync;
+   char *directory;
+   int ret;
+   wsync= (wdata==&window2) ? &window1 : &window2;
+   if(wsync==NULL || wsync->request==NULL || (wsync==&window2 && !GFTP_IS_CONNECTED (wsync->request)))
+       return 0;
+
+   directory= gftp_build_path (wsync->request, wsync->request->directory,dirname, NULL);
+   ret= gftpui_run_chdir (wsync, directory);
+   g_free(directory);
+   return ret;
+}
+
+
 static void
 list_doaction (gftp_window_data * wdata)
 {
@@ -809,6 +837,8 @@ list_doaction (gftp_window_data * wdata)
     {
       if(tempfle->st_mode & S_IXUSR)
       {
+          if(GTK_TOGGLE_BUTTON (btnSync)->active)
+              gftpui_sync_run_chdir (wdata, tempfle->file); /* can do an && with success */
           directory = gftp_build_path (wdata->request, wdata->request->directory,
                                    tempfle->file, NULL);
           success = gftpui_run_chdir (wdata, directory);
@@ -1007,10 +1037,13 @@ gftp_gtk_init_request (gftp_window_data * wdata)
 
 
 GtkWidget *
-gftp_gtk_create_btn(GtkWidget *parent,char *GTK1img, char *GTK2img, int imgtype,char *tooltip)
+gftp_gtk_create_btn(GtkWidget *parent,char *GTK1img, char *GTK2img, int imgtype,char *tooltip,int istoggle)
 {
-  GtkWidget *btn = gtk_button_new ();
+  GtkWidget *btn;
   GtkWidget *tempwid;
+
+  btn=istoggle? gtk_toggle_button_new() : gtk_button_new ();
+
 #if GTK_MAJOR_VERSION == 1
   tempwid = toolbar_pixmap (parent, GTK1img);
 #else
@@ -1071,17 +1104,17 @@ CreateFTPWindow (gftp_window_data * wdata)
   gtk_box_pack_start (GTK_BOX (listtoolbar), wdata->combo, TRUE, TRUE, 0);
 
   wdata->btnUp  =gftp_gtk_create_btn(listtoolbar,"",GTK_STOCK_GO_UP,
-                             GTK_ICON_SIZE_SMALL_TOOLBAR, _("Navigate up"));
+                             GTK_ICON_SIZE_SMALL_TOOLBAR, _("Navigate up"),0);
   wdata->btnHome=gftp_gtk_create_btn(listtoolbar,"",GTK_STOCK_HOME,
-                             GTK_ICON_SIZE_SMALL_TOOLBAR, _("Home"));
+                             GTK_ICON_SIZE_SMALL_TOOLBAR, _("Home"),0);
   wdata->btnRefresh=gftp_gtk_create_btn(listtoolbar,"",GTK_STOCK_REFRESH,
-                             GTK_ICON_SIZE_SMALL_TOOLBAR,_("Refresh"));
-  wdata->btnNewFolder=gftp_gtk_create_btn(listtoolbar,"",GTK_STOCK_OPEN,
-                             GTK_ICON_SIZE_SMALL_TOOLBAR,_("New Folder"));
+                             GTK_ICON_SIZE_SMALL_TOOLBAR,_("Refresh"),0);
+  wdata->btnNewFolder=gftp_gtk_create_btn(listtoolbar,"",GTK_STOCK_ADD,
+                             GTK_ICON_SIZE_SMALL_TOOLBAR,_("New Folder"),0);
   wdata->btnPrev=gftp_gtk_create_btn(listtoolbar,"",GTK_STOCK_GO_BACK,
-                             GTK_ICON_SIZE_SMALL_TOOLBAR,_("Previous Folder"));
+                             GTK_ICON_SIZE_SMALL_TOOLBAR,_("Previous Folder"),0);
   wdata->btnNext=gftp_gtk_create_btn(listtoolbar,"",GTK_STOCK_GO_FORWARD,
-                             GTK_ICON_SIZE_SMALL_TOOLBAR,_("Next Folder"));
+                             GTK_ICON_SIZE_SMALL_TOOLBAR,_("Next Folder"),0);
 
   gtk_widget_set_sensitive (wdata->btnPrev, 0);
   gtk_widget_set_sensitive (wdata->btnNext, 0);
@@ -1192,9 +1225,10 @@ static GtkWidget *
 CreateFTPWindows (GtkWidget * ui)
 {
   GtkWidget *box, *dlbox, *winpane, *dlpane, *logpane, *mainvbox, *tempwid;
+
   gftp_config_list_vars * tmplistvar;
   char *dltitles[2];
-  intptr_t tmplookup;
+  intptr_t tmplookup, show_hidden_files;
 #if GTK_MAJOR_VERSION > 1
   GtkTextBuffer * textbuf;
   GtkTextIter iter;
@@ -1261,6 +1295,17 @@ CreateFTPWindows (GtkWidget * ui)
   gtk_signal_connect_object (GTK_OBJECT (download_left_arrow), "clicked",
 			     GTK_SIGNAL_FUNC (get_files), NULL);
   gtk_container_add (GTK_CONTAINER (download_left_arrow), tempwid);
+
+  btnSync    =gftp_gtk_create_btn(dlbox,"",GTK_STOCK_NETWORK,
+                   GTK_ICON_SIZE_SMALL_TOOLBAR, _("Synchronized Navigation"),1);
+  btnHidden  =gftp_gtk_create_btn(dlbox,"",GTK_STOCK_FIND,
+                   GTK_ICON_SIZE_SMALL_TOOLBAR, _("Show/Hide Hidden files"),1);
+
+  gftp_lookup_global_option ("show_hidden_files", &show_hidden_files);
+  gtk_toggle_button_set_active(GTK_TOGGLE_BUTTON(btnHidden),(int)show_hidden_files);
+
+  g_signal_connect (btnHidden, "clicked", G_CALLBACK (show_hide_hidden_files), 
+                   (gpointer) (btnHidden));
 
   gtk_paned_pack1 (GTK_PANED (winpane), box, 1, 1);
 
