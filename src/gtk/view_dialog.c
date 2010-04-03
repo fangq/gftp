@@ -49,10 +49,11 @@ do_view_or_edit_file (gftp_window_data * fromwdata, int is_view)
         if (strcmp (gftp_protocols[fromwdata->request->protonum].name, "Local") == 0)
         {
           char cmd[2048]={'\0'};
+          int ret;
           sprintf(cmd,"$(which nautilus || which thunar|| which dolphin || which konqueror || which pcmanfm) '%s'",curfle->file);
-          ftp_log (gftp_logging_error, NULL,
+          if(cmd[0]) ret=system(cmd);
+          ftp_log (gftp_logging_misc, NULL,
                  _("View directory: run external command\n\t%s\n"), cmd);
-          if(cmd[0]) system(cmd);
         }
         else
         {

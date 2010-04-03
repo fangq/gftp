@@ -420,6 +420,17 @@ gftpui_site_dialog (gpointer data)
 }
 
 
+void
+gftpui_update_history_buttons(gftp_window_data * wdata)
+{
+  if(wdata->dirhistory)
+  {
+       gtk_widget_set_sensitive (wdata->btnPrev, wdata->dirhistory->prev!=NULL);
+       gtk_widget_set_sensitive (wdata->btnNext, wdata->dirhistory->next!=NULL);
+  }
+}
+
+
 int
 gftpui_run_chdir (gpointer uidata, char *directory)
 {
@@ -440,6 +451,30 @@ gftpui_run_chdir (gpointer uidata, char *directory)
   cdata->dont_clear_cache = 1;
 
   ret = gftpui_common_run_callback_function (cdata);
+  if(ret==1)
+  {
+     if(wdata->dirhistory && wdata->dirhistory->data 
+            && strcmp((char*)(wdata->dirhistory->data),directory)!=0)
+     {
+       GList *deldir, *head, *nextdir=wdata->dirhistory ? g_list_last(wdata->dirhistory) : NULL;
+       while(nextdir!=wdata->dirhistory)
+       {
+         deldir=nextdir;
+         nextdir=nextdir->prev;
+         g_free((char*)(deldir->data));
+         head=g_list_delete_link(wdata->dirhistory,deldir);
+       }
+       if(wdata->dirhistory)
+         wdata->dirhistory->next=NULL;
+       wdata->dirhistory=g_list_last(g_list_append(wdata->dirhistory,g_strdup(directory)));
+     }
+     else if(wdata->dirhistory==NULL || (wdata->dirhistory && wdata->dirhistory->next==NULL
+           && strcmp((char*)(wdata->dirhistory->data),directory)!=0))
+     {
+       wdata->dirhistory=g_list_last(g_list_append(wdata->dirhistory,g_strdup(directory)));
+     }
+  }
+  gftpui_update_history_buttons(wdata);
 
   g_free(tempstr);
   g_free (cdata);
@@ -483,6 +518,7 @@ gftpui_disconnect (void *uidata)
   gftp_delete_cache_entry (wdata->request, NULL, 1);
   gftp_disconnect (wdata->request);
   remove_files_window (wdata);
+  gftp_free_dirhistory(wdata);
 
   /* Free the request structure so that all old settings are purged. */
   gftp_request_destroy (wdata->request, 0);

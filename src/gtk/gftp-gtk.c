@@ -273,6 +273,26 @@ gftp_gtk_refresh_focus (gftp_window_data * wdata)
 }
 
 
+void
+gftp_free_dirhistory(gftp_window_data * wdata)
+{
+   GList *node,*head;
+   if(wdata->dirhistory)
+   {
+     head=g_list_first(wdata->dirhistory);
+     for(node=g_list_last(wdata->dirhistory); node; node=node->prev)
+     {
+        g_free((char*)(node->data));
+        head=g_list_delete_link(head,node);
+     }
+   }
+   gftpui_update_history_buttons(wdata);
+   if(wdata->request && wdata->request->homedir)
+      g_free(wdata->request->homedir);
+   wdata->request->homedir=NULL;
+}
+
+
 static void
 navi_up_directory(gftp_window_data * wdata)
 {
@@ -304,6 +324,40 @@ gftp_gtk_go_home(gftp_window_data * wdata)
   }
   if(wdata->request->homedir)
     gftpui_run_chdir (wdata, wdata->request->homedir);
+}
+
+static void
+gftp_gtk_previous_dir(gftp_window_data * wdata)
+{
+  wdata=&window1;
+  if(gtk_container_get_focus_child(GTK_CONTAINER(window2.container)))
+  {
+      if (!GFTP_IS_CONNECTED (window2.request))
+        return;
+      wdata=&window2;
+  }
+  if(wdata->dirhistory && wdata->dirhistory->prev && wdata->dirhistory->prev->data)
+  {
+    wdata->dirhistory=wdata->dirhistory->prev;
+    gftpui_run_chdir (wdata, (char *)(wdata->dirhistory->data));
+  }
+}
+
+static void
+gftp_gtk_next_dir(gftp_window_data * wdata)
+{
+  wdata=&window1;
+  if(gtk_container_get_focus_child(GTK_CONTAINER(window2.container)))
+  {
+      if (!GFTP_IS_CONNECTED (window2.request))
+        return;
+      wdata=&window2;
+  }
+  if(wdata->dirhistory && wdata->dirhistory->next && wdata->dirhistory->next->data)
+  {
+    wdata->dirhistory=wdata->dirhistory->next;
+    gftpui_run_chdir (wdata, (char *)(wdata->dirhistory->data));
+  }
 }
 
 
@@ -354,7 +408,9 @@ CreateMenus (GtkWidget * parent)
     {N_("/Local/Change _Filespec..."), "<control><shift>F", change_filespec, 0,
      MN_(NULL)},
     {N_("/Local/_Show selected"), NULL, show_selected, 0, MN_(NULL)},
-    {N_("/Local/Navigate _up"), "<alt>Up", navi_up_directory, 0, MN_(NULL)},
+    {N_("/Local/Navigate _Up"), "<alt>Up", navi_up_directory, 0, MN_(NULL)},
+    {N_("/Local/Pre_vious Folder"), "<alt>Left", gftp_gtk_previous_dir, 0, MN_(NULL)},
+    {N_("/Local/Ne_xt Folder"), "<alt>Right", gftp_gtk_next_dir, 0, MN_(NULL)},
     {N_("/Local/Select _All"), "<control><shift>A", selectall, 0, MN_(NULL)},
     {N_("/Local/Select All Files"), NULL, selectallfiles, 0, MN_(NULL)},
     {N_("/Local/Deselect All"), NULL, deselectall, 0, MN_(NULL)},
@@ -383,7 +439,9 @@ CreateMenus (GtkWidget * parent)
     {N_("/Remote/Change _Filespec..."), "<control>F", change_filespec, 0,
         MN_(NULL)},
     {N_("/Remote/_Show selected"), NULL, show_selected, 0, MN_(NULL)},
-    {N_("/Remote/Navigate _up"), "<alt>Up", navi_up_directory, 0, MN_(NULL)},
+    {N_("/Remote/Navigate _Up"), "<alt>Up", navi_up_directory, 0, MN_(NULL)},
+    {N_("/Remote/Pre_vious Folder"), "<alt>Left", gftp_gtk_previous_dir, 0, MN_(NULL)},
+    {N_("/Remote/Ne_xt Folder"), "<alt>Right", gftp_gtk_next_dir, 0, MN_(NULL)},
     {N_("/Remote/Select _All"), "<control>A", selectall, 0, MN_(NULL)},
     {N_("/Remote/Select All Files"), NULL, selectallfiles, 0, MN_(NULL)},
     {N_("/Remote/Deselect All"), NULL, deselectall, 0, MN_(NULL)},
@@ -977,7 +1035,7 @@ CreateFTPWindow (gftp_window_data * wdata)
     {"application/x-rootwin-drop", 0, 1}
   };
   char *titles[7], tempstr[50], *startup_directory;
-  GtkWidget *box, *scroll_list, *listtoolbar, *btnUp,*btnRefresh,*btnHome,*btnNewFolder;
+  GtkWidget *box, *scroll_list, *listtoolbar;
   intptr_t listbox_file_height, colwidth;
 
   titles[0] = "";
@@ -1012,19 +1070,28 @@ CreateFTPWindow (gftp_window_data * wdata)
   gtk_combo_set_case_sensitive (GTK_COMBO (wdata->combo), 1);
   gtk_box_pack_start (GTK_BOX (listtoolbar), wdata->combo, TRUE, TRUE, 0);
 
-  btnUp  =gftp_gtk_create_btn(listtoolbar,"",GTK_STOCK_GO_UP,
+  wdata->btnUp  =gftp_gtk_create_btn(listtoolbar,"",GTK_STOCK_GO_UP,
                              GTK_ICON_SIZE_SMALL_TOOLBAR, _("Navigate up"));
-  btnHome=gftp_gtk_create_btn(listtoolbar,"",GTK_STOCK_HOME,
+  wdata->btnHome=gftp_gtk_create_btn(listtoolbar,"",GTK_STOCK_HOME,
                              GTK_ICON_SIZE_SMALL_TOOLBAR, _("Home"));
-  btnRefresh=gftp_gtk_create_btn(listtoolbar,"",GTK_STOCK_REFRESH,
+  wdata->btnRefresh=gftp_gtk_create_btn(listtoolbar,"",GTK_STOCK_REFRESH,
                              GTK_ICON_SIZE_SMALL_TOOLBAR,_("Refresh"));
-  btnNewFolder=gftp_gtk_create_btn(listtoolbar,"",GTK_STOCK_OPEN,
+  wdata->btnNewFolder=gftp_gtk_create_btn(listtoolbar,"",GTK_STOCK_OPEN,
                              GTK_ICON_SIZE_SMALL_TOOLBAR,_("New Folder"));
+  wdata->btnPrev=gftp_gtk_create_btn(listtoolbar,"",GTK_STOCK_GO_BACK,
+                             GTK_ICON_SIZE_SMALL_TOOLBAR,_("Previous Folder"));
+  wdata->btnNext=gftp_gtk_create_btn(listtoolbar,"",GTK_STOCK_GO_FORWARD,
+                             GTK_ICON_SIZE_SMALL_TOOLBAR,_("Next Folder"));
 
-  g_signal_connect (btnUp, "clicked", G_CALLBACK (navi_up_directory), (gpointer) wdata);
-  g_signal_connect (btnRefresh, "clicked", G_CALLBACK (gftp_gtk_refresh_focus), (gpointer) wdata);
-  g_signal_connect (btnHome, "clicked", G_CALLBACK (gftp_gtk_go_home), (gpointer) wdata);
-  g_signal_connect (btnNewFolder, "clicked", G_CALLBACK (gftp_gtk_mkdir), (gpointer) wdata);
+  gtk_widget_set_sensitive (wdata->btnPrev, 0);
+  gtk_widget_set_sensitive (wdata->btnNext, 0);
+
+  g_signal_connect (wdata->btnUp, "clicked", G_CALLBACK (navi_up_directory), (gpointer) wdata);
+  g_signal_connect (wdata->btnRefresh, "clicked", G_CALLBACK (gftp_gtk_refresh_focus), (gpointer) wdata);
+  g_signal_connect (wdata->btnHome, "clicked", G_CALLBACK (gftp_gtk_go_home), (gpointer) wdata);
+  g_signal_connect (wdata->btnNewFolder, "clicked", G_CALLBACK (gftp_gtk_mkdir), (gpointer) wdata);
+  g_signal_connect (wdata->btnPrev, "clicked", G_CALLBACK (gftp_gtk_previous_dir), (gpointer) wdata);
+  g_signal_connect (wdata->btnNext, "clicked", G_CALLBACK (gftp_gtk_next_dir), (gpointer) wdata);
 
   gtk_signal_connect (GTK_OBJECT (GTK_COMBO (wdata->combo)->entry),
 		      "activate", GTK_SIGNAL_FUNC (chdir_edit),
