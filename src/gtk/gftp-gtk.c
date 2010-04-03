@@ -255,14 +255,26 @@ gftp_gtk_refresh (gftp_window_data * wdata)
 
 
 static void
+gftp_gtk_refresh_focus (gftp_window_data * wdata)
+{
+  wdata=&window1;
+  if(gtk_container_get_focus_child(GTK_CONTAINER(window2.container)))
+  {
+      if (!GFTP_IS_CONNECTED (window2.request))
+        return;
+      wdata=&window2;
+  }
+  gftp_gtk_refresh (wdata);
+}
+
+
+static void
 navi_up_directory(gftp_window_data * wdata)
 {
   char *directory;
-  if(gtk_widget_is_focus(window1.listbox))
-  {
-      wdata=&window1;
-  }
-  else
+  wdata=&window1;
+
+  if(gtk_container_get_focus_child(GTK_CONTAINER(window2.container)))
   {
       if (!GFTP_IS_CONNECTED (window2.request))
         return;
@@ -325,7 +337,7 @@ CreateMenus (GtkWidget * parent)
         MN_(NULL)},
     {N_("/Local/_Edit..."), "<control><shift>E", edit_dialog, 0, MN_(NULL)},
     {N_("/Local/_View..."), "<control><shift>L", view_dialog, 0, MN_(NULL)},
-    {N_("/Local/_Refresh"), "<control><shift>R", gftp_gtk_refresh, 0,
+    {N_("/Local/_Refresh"), "<control>R", gftp_gtk_refresh_focus, 0,
         MS_(GTK_STOCK_REFRESH)},
     {N_("/_Remote"), NULL, 0, 0, MN_("<Branch>")},
     {N_("/Remote/tearoff"), NULL, 0, 0, MN_("<Tearoff>")},
@@ -353,7 +365,7 @@ CreateMenus (GtkWidget * parent)
     {N_("/Remote/_Delete..."), "<control>D", delete_dialog, 0, MN_(NULL)},
     {N_("/Remote/_Edit..."), "<control>E", edit_dialog, 0, MN_(NULL)},
     {N_("/Remote/_View..."), "<control>L", view_dialog, 0, MN_(NULL)},
-    {N_("/Remote/_Refresh"), "<control>R", gftp_gtk_refresh, 0,
+    {N_("/Remote/_Refresh"), "<control>R", gftp_gtk_refresh_focus, 0,
         MS_(GTK_STOCK_REFRESH)},
     {N_("/_Bookmarks"), NULL, 0, 0, MN_("<Branch>")},
     {N_("/Bookmarks/tearoff"), NULL, 0, 0, MN_("<Tearoff>")},
@@ -902,6 +914,24 @@ gftp_gtk_init_request (gftp_window_data * wdata)
 }
 
 
+GtkWidget *
+gftp_gtk_create_btn(GtkWidget *parent,char *GTK1img, char *GTK2img, int imgtype)
+{
+  GtkWidget *btn = gtk_button_new ();
+  GtkWidget *tempwid;
+#if GTK_MAJOR_VERSION == 1
+  tempwid = toolbar_pixmap (parent, GTK1img);
+#else
+  tempwid = gtk_image_new_from_stock (GTK2img,imgtype);
+#endif
+  gtk_widget_set_size_request (btn, 30, -1);
+
+  gtk_box_pack_start (GTK_BOX (parent), btn, FALSE, FALSE, 0);
+  gtk_container_add (GTK_CONTAINER (btn), tempwid);
+  return btn;
+}
+
+
 static GtkWidget *
 CreateFTPWindow (gftp_window_data * wdata)
 {
@@ -911,7 +941,7 @@ CreateFTPWindow (gftp_window_data * wdata)
     {"application/x-rootwin-drop", 0, 1}
   };
   char *titles[7], tempstr[50], *startup_directory;
-  GtkWidget *box, *scroll_list, *parent;
+  GtkWidget *box, *scroll_list, *listtoolbar, *btnUp,*btnRefresh,*btnHome,*btnNewFolder;
   intptr_t listbox_file_height, colwidth;
 
   titles[0] = "";
@@ -925,22 +955,35 @@ CreateFTPWindow (gftp_window_data * wdata)
   wdata->request = gftp_request_new ();
   gftp_gtk_init_request (wdata);
 
-  parent = gtk_frame_new (NULL);
+  wdata->container = gtk_frame_new (NULL);
   
   gftp_lookup_global_option ("listbox_file_height", &listbox_file_height);
   g_snprintf (tempstr, sizeof (tempstr), "listbox_%s_width", wdata->prefix_col_str);
   gftp_lookup_global_option (tempstr, &colwidth);
-  gtk_widget_set_size_request (parent, colwidth, listbox_file_height);
+  gtk_widget_set_size_request (wdata->container, colwidth, listbox_file_height);
 
-  gtk_container_border_width (GTK_CONTAINER (parent), 5);
+  gtk_container_border_width (GTK_CONTAINER (wdata->container), 5);
 
   box = gtk_vbox_new (FALSE, 0);
+  listtoolbar = gtk_hbox_new (FALSE, 0);
+  gtk_widget_set_size_request (listtoolbar, -1, 30);
+
   gtk_container_border_width (GTK_CONTAINER (box), 5);
-  gtk_container_add (GTK_CONTAINER (parent), box);
+  gtk_container_add (GTK_CONTAINER (wdata->container), box);
+  gtk_box_pack_start (GTK_BOX (box), listtoolbar, FALSE, FALSE, 0);
 
   wdata->combo = gtk_combo_new ();
   gtk_combo_set_case_sensitive (GTK_COMBO (wdata->combo), 1);
-  gtk_box_pack_start (GTK_BOX (box), wdata->combo, FALSE, FALSE, 0);
+  gtk_box_pack_start (GTK_BOX (listtoolbar), wdata->combo, TRUE, TRUE, 0);
+
+  btnUp  =gftp_gtk_create_btn(listtoolbar,"",GTK_STOCK_GO_UP,GTK_ICON_SIZE_SMALL_TOOLBAR);
+  btnHome=gftp_gtk_create_btn(listtoolbar,"",GTK_STOCK_HOME,GTK_ICON_SIZE_SMALL_TOOLBAR);
+  btnRefresh=gftp_gtk_create_btn(listtoolbar,"",GTK_STOCK_REFRESH,GTK_ICON_SIZE_SMALL_TOOLBAR);
+  btnNewFolder=gftp_gtk_create_btn(listtoolbar,"",GTK_STOCK_OPEN,GTK_ICON_SIZE_SMALL_TOOLBAR);
+
+  g_signal_connect (btnUp, "clicked", G_CALLBACK (navi_up_directory), (gpointer) wdata);
+  g_signal_connect (btnRefresh, "clicked", G_CALLBACK (gftp_gtk_refresh_focus), (gpointer) wdata);
+
   gtk_signal_connect (GTK_OBJECT (GTK_COMBO (wdata->combo)->entry),
 		      "activate", GTK_SIGNAL_FUNC (chdir_edit),
 		      (gpointer) wdata);
@@ -1019,7 +1062,7 @@ CreateFTPWindow (gftp_window_data * wdata)
                       (gpointer) wdata);
   gtk_signal_connect_after (GTK_OBJECT (wdata->listbox), "button_press_event",
                             GTK_SIGNAL_FUNC (list_dblclick), (gpointer) wdata);
-  return (parent);
+  return (wdata->container);
 }
 
 
