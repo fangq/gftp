@@ -280,7 +280,7 @@ GHashTable * gftp_global_options_htable = NULL,
            * gftp_config_list_htable = NULL,
            * gftp_bookmarks_htable = NULL;
 
-char gftp_version[] = "gFTP - evolve " VERSION;
+char gftp_version[] = "gFTP SVN " VERSION;
 
 GList * gftp_file_transfers = NULL, 
       * gftp_file_transfer_logs = NULL,
