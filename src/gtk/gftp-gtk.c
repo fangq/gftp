@@ -215,7 +215,12 @@ get_focus_window()
 {
   gftp_window_data * wdata;
   wdata=&window1;
+#if GLIB_CHECK_VERSION(2,14,0)
   if(gtk_container_get_focus_child(GTK_CONTAINER(window2.container)))
+#else
+  GtkContainer *cont = GTK_CONTAINER(window2.container);
+  if(cont!=NULL && GTK_IS_CONTAINER (cont) && cont->focus_child)
+#endif
   {
       if (!GFTP_IS_CONNECTED (window2.request))
         return NULL;
