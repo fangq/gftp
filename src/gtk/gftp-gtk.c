@@ -210,17 +210,27 @@ _gftpui_gtk_do_openurl (gftp_window_data * wdata, gftp_dialog_data * ddata)
 }
 
 
-static void
-openurl_dialog (gpointer data)
+gftp_window_data *
+get_focus_window()
 {
   gftp_window_data * wdata;
   wdata=&window1;
   if(gtk_container_get_focus_child(GTK_CONTAINER(window2.container)))
   {
       if (!GFTP_IS_CONNECTED (window2.request))
-        return;
+        return NULL;
       wdata=&window2;
   }
+  return wdata;
+}
+
+
+static void
+openurl_dialog (gpointer data)
+{
+  gftp_window_data * wdata=get_focus_window();
+  if(wdata==NULL)
+     return;
   MakeEditDialog (_("Open Location"), _("Enter a URL to connect to"),
                   NULL, 1, NULL, gftp_dialog_button_connect,
                   _gftpui_gtk_do_openurl, wdata,
@@ -262,13 +272,9 @@ gftp_gtk_refresh (gftp_window_data * wdata)
 static void
 gftp_gtk_refresh_focus (gftp_window_data * wdata)
 {
-  wdata=&window1;
-  if(gtk_container_get_focus_child(GTK_CONTAINER(window2.container)))
-  {
-      if (!GFTP_IS_CONNECTED (window2.request))
-        return;
-      wdata=&window2;
-  }
+  wdata=get_focus_window();
+  if(wdata==NULL)
+     return;
   gftp_gtk_refresh (wdata);
 }
 
@@ -305,17 +311,32 @@ show_hide_hidden_files(GtkWidget * togbtn)
 
 
 static void
+gftp_edit_dialog(gftp_window_data * wdata)
+{
+  wdata=get_focus_window();
+  if(wdata==NULL)
+     return;
+  edit_dialog (wdata);
+}
+
+
+static void
+gftp_view_dialog(gftp_window_data * wdata)
+{
+  wdata=get_focus_window();
+  if(wdata==NULL)
+     return;
+  view_dialog (wdata);
+}
+
+
+static void
 navi_up_directory(gftp_window_data * wdata)
 {
   char *directory;
-  wdata=&window1;
-
-  if(gtk_container_get_focus_child(GTK_CONTAINER(window2.container)))
-  {
-      if (!GFTP_IS_CONNECTED (window2.request))
-        return;
-      wdata=&window2;
-  }
+  wdata=get_focus_window();
+  if(wdata==NULL)
+     return;
   directory = gftp_build_path (wdata->request, wdata->request->directory,
                                "..", NULL);
   gftpui_run_chdir (wdata, directory);
@@ -326,13 +347,9 @@ navi_up_directory(gftp_window_data * wdata)
 static void
 gftp_gtk_go_home(gftp_window_data * wdata)
 {
-  wdata=&window1;
-  if(gtk_container_get_focus_child(GTK_CONTAINER(window2.container)))
-  {
-      if (!GFTP_IS_CONNECTED (window2.request))
-        return;
-      wdata=&window2;
-  }
+  wdata=get_focus_window();
+  if(wdata==NULL)
+     return;
   if(wdata->request->homedir)
     gftpui_run_chdir (wdata, wdata->request->homedir);
 }
@@ -340,13 +357,9 @@ gftp_gtk_go_home(gftp_window_data * wdata)
 static void
 gftp_gtk_previous_dir(gftp_window_data * wdata)
 {
-  wdata=&window1;
-  if(gtk_container_get_focus_child(GTK_CONTAINER(window2.container)))
-  {
-      if (!GFTP_IS_CONNECTED (window2.request))
-        return;
-      wdata=&window2;
-  }
+  wdata=get_focus_window();
+  if(wdata==NULL)
+     return;
   if(wdata->dirhistory && wdata->dirhistory->prev && wdata->dirhistory->prev->data)
   {
     wdata->dirhistory=wdata->dirhistory->prev;
@@ -357,13 +370,9 @@ gftp_gtk_previous_dir(gftp_window_data * wdata)
 static void
 gftp_gtk_next_dir(gftp_window_data * wdata)
 {
-  wdata=&window1;
-  if(gtk_container_get_focus_child(GTK_CONTAINER(window2.container)))
-  {
-      if (!GFTP_IS_CONNECTED (window2.request))
-        return;
-      wdata=&window2;
-  }
+  wdata=get_focus_window();
+  if(wdata==NULL)
+     return;
   if(wdata->dirhistory && wdata->dirhistory->next && wdata->dirhistory->next->data)
   {
     wdata->dirhistory=wdata->dirhistory->next;
@@ -375,13 +384,9 @@ gftp_gtk_next_dir(gftp_window_data * wdata)
 static void
 gftp_gtk_mkdir(gftp_window_data * wdata)
 {
-  wdata=&window1;
-  if(gtk_container_get_focus_child(GTK_CONTAINER(window2.container)))
-  {
-      if (!GFTP_IS_CONNECTED (window2.request))
-        return;
-      wdata=&window2;
-  }
+  wdata=get_focus_window();
+  if(wdata==NULL)
+     return;
   gftpui_mkdir_dialog (wdata);
 }
 
@@ -420,7 +425,7 @@ CreateMenus (GtkWidget * parent)
      MN_(NULL)},
     {N_("/Local/_Show selected"), NULL, show_selected, 0, MN_(NULL)},
     {N_("/Local/Navigate _Up"), "<alt>Up", navi_up_directory, 0, MN_(NULL)},
-    {N_("/Local/Pre_vious Folder"), "<alt>Left", gftp_gtk_previous_dir, 0, MN_(NULL)},
+    {N_("/Local/Previous Folder"), "<alt>Left", gftp_gtk_previous_dir, 0, MN_(NULL)},
     {N_("/Local/Ne_xt Folder"), "<alt>Right", gftp_gtk_next_dir, 0, MN_(NULL)},
     {N_("/Local/Select _All"), "<control><shift>A", selectall, 0, MN_(NULL)},
     {N_("/Local/Select All Files"), NULL, selectallfiles, 0, MN_(NULL)},
@@ -436,8 +441,8 @@ CreateMenus (GtkWidget * parent)
         MN_(NULL)},
     {N_("/Local/_Delete..."), "<control><shift>D", delete_dialog, 0,
         MN_(NULL)},
-    {N_("/Local/_Edit..."), "<control><shift>E", edit_dialog, 0, MN_(NULL)},
-    {N_("/Local/_View..."), "<control><shift>L", view_dialog, 0, MN_(NULL)},
+    {N_("/Local/_Edit..."), "<control>E", gftp_edit_dialog, 0, MN_(NULL)},
+    {N_("/Local/_View..."), "<control>L", gftp_view_dialog, 0, MN_(NULL)},
     {N_("/Local/_Refresh"), "<control>R", gftp_gtk_refresh_focus, 0,
         MS_(GTK_STOCK_REFRESH)},
     {N_("/_Remote"), NULL, 0, 0, MN_("<Branch>")},
@@ -451,7 +456,7 @@ CreateMenus (GtkWidget * parent)
         MN_(NULL)},
     {N_("/Remote/_Show selected"), NULL, show_selected, 0, MN_(NULL)},
     {N_("/Remote/Navigate _Up"), "<alt>Up", navi_up_directory, 0, MN_(NULL)},
-    {N_("/Remote/Pre_vious Folder"), "<alt>Left", gftp_gtk_previous_dir, 0, MN_(NULL)},
+    {N_("/Remote/Previous Folder"), "<alt>Left", gftp_gtk_previous_dir, 0, MN_(NULL)},
     {N_("/Remote/Ne_xt Folder"), "<alt>Right", gftp_gtk_next_dir, 0, MN_(NULL)},
     {N_("/Remote/Select _All"), "<control>A", selectall, 0, MN_(NULL)},
     {N_("/Remote/Select All Files"), NULL, selectallfiles, 0, MN_(NULL)},
@@ -466,8 +471,8 @@ CreateMenus (GtkWidget * parent)
     {N_("/Remote/Rena_me..."), "<control>M", gftpui_rename_dialog, 0,
         MN_(NULL)},
     {N_("/Remote/_Delete..."), "<control>D", delete_dialog, 0, MN_(NULL)},
-    {N_("/Remote/_Edit..."), "<control>E", edit_dialog, 0, MN_(NULL)},
-    {N_("/Remote/_View..."), "<control>L", view_dialog, 0, MN_(NULL)},
+    {N_("/Remote/_Edit..."), "<control>E", gftp_edit_dialog, 0, MN_(NULL)},
+    {N_("/Remote/_View..."), "<control>L", gftp_view_dialog, 0, MN_(NULL)},
     {N_("/Remote/_Refresh"), "<control>R", gftp_gtk_refresh_focus, 0,
         MS_(GTK_STOCK_REFRESH)},
     {N_("/_Bookmarks"), NULL, 0, 0, MN_("<Branch>")},
@@ -1104,7 +1109,7 @@ CreateFTPWindow (gftp_window_data * wdata)
   gtk_box_pack_start (GTK_BOX (listtoolbar), wdata->combo, TRUE, TRUE, 0);
 
   wdata->btnUp  =gftp_gtk_create_btn(listtoolbar,"",GTK_STOCK_GO_UP,
-                             GTK_ICON_SIZE_SMALL_TOOLBAR, _("Navigate up"),0);
+                             GTK_ICON_SIZE_SMALL_TOOLBAR, _("Navigate Up"),0);
   wdata->btnHome=gftp_gtk_create_btn(listtoolbar,"",GTK_STOCK_HOME,
                              GTK_ICON_SIZE_SMALL_TOOLBAR, _("Home"),0);
   wdata->btnRefresh=gftp_gtk_create_btn(listtoolbar,"",GTK_STOCK_REFRESH,
