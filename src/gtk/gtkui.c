@@ -456,7 +456,7 @@ gftpui_run_chdir (gpointer uidata, char *directory)
   if(ret==1)
   {
      if(wdata->dirhistory && wdata->dirhistory->data 
-            && strcmp((char*)(wdata->dirhistory->data),directory)!=0)
+            && strcmp((char*)(wdata->dirhistory->data),tempstr)!=0)
      {
        GList *deldir, *head, *nextdir=wdata->dirhistory ? g_list_last(wdata->dirhistory) : NULL;
        while(nextdir!=wdata->dirhistory)
@@ -468,12 +468,12 @@ gftpui_run_chdir (gpointer uidata, char *directory)
        }
        if(wdata->dirhistory)
          wdata->dirhistory->next=NULL;
-       wdata->dirhistory=g_list_last(g_list_append(wdata->dirhistory,g_strdup(directory)));
+       wdata->dirhistory=g_list_last(g_list_append(wdata->dirhistory,g_strdup(tempstr)));
      }
      else if(wdata->dirhistory==NULL || (wdata->dirhistory && wdata->dirhistory->next==NULL
-           && strcmp((char*)(wdata->dirhistory->data),directory)!=0))
+           && strcmp((char*)(wdata->dirhistory->data),tempstr)!=0))
      {
-       wdata->dirhistory=g_list_last(g_list_append(wdata->dirhistory,g_strdup(directory)));
+       wdata->dirhistory=g_list_last(g_list_append(wdata->dirhistory,g_strdup(tempstr)));
      }
   }
   gftpui_update_history_buttons(wdata);
