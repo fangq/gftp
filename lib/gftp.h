@@ -686,6 +686,10 @@ void gftp_delete_cache_entry 		( gftp_request * request,
 					  const char *str,
 					  size_t *dest_len );
 
+/*@null@*/ char * gftp_filename_to_utf8_guess ( gftp_request * request,
+                                          const char *str,
+                                          size_t *dest_len );
+
 /* config_file.c */
 int gftp_config_parse_args 		( char *str, 
 					  int numargs, 
