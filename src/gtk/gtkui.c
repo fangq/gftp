@@ -455,6 +455,10 @@ gftpui_run_chdir (gpointer uidata, char *directory)
   ret = gftpui_common_run_callback_function (cdata);
   if(ret==1)
   {
+     /* homedir is saved in gftp_connect event, here we need to add it */
+     if(wdata->dirhistory==NULL && wdata->request && wdata->request->homedir)
+        wdata->dirhistory=g_list_last(g_list_append(wdata->dirhistory,g_strdup((char*)wdata->request->homedir)));
+
      if(wdata->dirhistory && wdata->dirhistory->data 
             && strcmp((char*)(wdata->dirhistory->data),tempstr)!=0)
      {
