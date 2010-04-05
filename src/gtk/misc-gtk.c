@@ -337,6 +337,8 @@ report_list_info(gftp_window_data * wdata)
      insert_commas (filesize, ofstr, sizeof (ofstr));
      rep+=sprintf(rep, _(" Size: %.48s B "), ofstr);
   }
+  if(strlen(rep)==1) 
+     return NULL;
   rep+=sprintf(rep, "]");
   return g_strdup(listreport);
 }
