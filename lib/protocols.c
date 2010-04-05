@@ -558,6 +558,8 @@ gftp_parse_bookmark (gftp_request * request, gftp_request * local_request,
   if (local_request != NULL && tempentry->local_dir != NULL &&
       *tempentry->local_dir != '\0')
     {
+      g_free(local_request->homedir);
+      local_request->homedir=g_strdup(tempentry->local_dir);
       gftp_set_directory (local_request, tempentry->local_dir);
       if (refresh_local != NULL)
         *refresh_local = 1;
