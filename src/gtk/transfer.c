@@ -38,6 +38,7 @@ ftp_list_files (gftp_window_data * wdata)
   if(gftpui_common_run_callback_function (cdata) == GFTP_ECANIGNORE)
   {
      g_free(cdata);
+     update_window(wdata);
      return (1);
   }
   wdata->files = cdata->files;
