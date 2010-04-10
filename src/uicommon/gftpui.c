@@ -1536,7 +1536,7 @@ gftpui_common_transfer_files (gftp_transfer * tdata)
           if (gftp_abort_transfer (tdata->fromreq) != 0)
             gftp_disconnect (tdata->fromreq);
         }
-      else if (ret == GFTP_EFATAL)
+      else if (ret == GFTP_EFATAL || ret == GFTP_ECANIGNORE)
         skipped_files++;
       else if (ret < 0)
         {
